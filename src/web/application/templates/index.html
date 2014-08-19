@@ -1,36 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../favicon.ico">
 
-    <title>Thunderfs</title>
+		<title>10away</title>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
-    
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<!-- for develope //-->
+		<link rel="stylesheet/less" type="text/css" href="/static/src/less/thunderfs.less">
 
-    <!--[if lt IE 9]>
-      <link href="//netdna.bootstrapcdn.com/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
-      <link href="/assets/ie/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
-      <script src="/assets/ie/html5shiv.js"></script>
-      <script src="/assets/ie/respond.min.js"></script>
-      <script src="/assets/ie/respond.proxy.js"></script>
-    <![endif]-->
-  </head>
+		<!-- for production
+		<link rel="stylesheet" type="text/css" href="/static/css/thunderfs.min.css">
+		//-->
 
-  <body>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
 
-    <div class="container">
-      Thunderfs
 
-    </div> <!-- /container -->
+		<!-- for develope //-->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
 
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  </body>
+		<!--[if lt IE 9]>
+			<link href="//netdna.bootstrapcdn.com/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+			<link href="/static/ie/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+			<script src="/static/ie/html5shiv.js"></script>
+			<script src="/static/ie/respond.min.js"></script>
+			<script src="/static/ie/respond.proxy.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="container">
+			<h1></h1>
+
+			<blockquote>
+					<p></p>
+			</blockquote>
+
+			<div class="text-center">
+				<span class="btn btn-success fileinput-button">
+					<h3>
+						<i class="fa fa-cloud-upload"></i>
+						<span>Select files...</span>
+					</h3>
+					<input id="fileupload" type="file" name="files[]" multiple />
+				</span>
+			</div>
+			<div id="progress" class="progress">
+					<div class="progress-bar progress-bar-success"></div>
+			</div>
+		</div>
+
+		<!-- for develope //-->
+		<script>
+				var require = {
+						baseUrl: "/static/src/js",
+						paths: {
+								"jquery": "//code.jquery.com/jquery-1.11.1.min",
+								"bootstrap": "//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min"
+						},
+						shim: {
+						}
+				};
+		</script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+		<script src="/static/src/js/thunderfs.js"></script>
+
+		<!-- for production
+		<script src="/static/js/thunderfs.min.js"></script>
+		//-->
+	</body>
 </html>

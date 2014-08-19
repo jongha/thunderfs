@@ -8,4 +8,4 @@ from flask import Flask
 import application
 app = application.app # for uWSGI callable setting
 
-sys.path.insert(1, os.path.join(os.path.abspath('.'), 'lib'))
+sys.path.insert(1, os.path.join(os.path.abspath('.'), 'extensions'))
