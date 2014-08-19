@@ -2,7 +2,12 @@
 require(["jquery"], function ($) { // jquery load first
 
   require(["thunderfs.cookie"], function (cookie) { // thunderfs modules
-    console.log(cookie.get());
+  
+    $("#fileupload").bind("change", function(evt) {
+      var files = evt.target.files;
+      var file = files[0];
+      console.log(file.name);
+    });
     
   });
 });

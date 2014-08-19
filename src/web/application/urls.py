@@ -9,8 +9,8 @@ from application.views import file
 
 ## URL dispatch rules
 app.add_url_rule('/', view_func=index.main)
-app.add_url_rule('/file/put', view_func=file.put, methods=['POST'])
-app.add_url_rule('/file/get', view_func=file.get, methods=['GET'])
+app.add_url_rule('/put', view_func=file.put, methods=['POST', 'GET'])
+app.add_url_rule('/get', view_func=file.get, methods=['GET'])
 
 ## Error handlers
 # Handle 404 errors
