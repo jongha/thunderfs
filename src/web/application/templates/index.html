@@ -24,7 +24,6 @@
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
 
-
 		<!-- for develope //-->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
 
@@ -44,22 +43,30 @@
 			<blockquote>
 					<p></p>
 			</blockquote>
+		</div>
 
-			<div class="text-center">
+		<div class="container">
+			<div class="text-center" id="dragdrop">
 				<span class="btn btn-success fileinput-button">
-					<h3>
+					<h6>
 						<i class="fa fa-cloud-upload"></i>
 						<span>Select files...</span>
-					</h3>
-					<!--input id="fileupload" type="file" name="files[]" multiple /-->
-					<input id="fileupload" type="file" name="files[]" >
+					</h6>
+					<input id="fileupload" type="file" name="files[]" multiple="multiple" />
 				</span>
 			</div>
-			<div class="progress">
-				<div  id="progress" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">0%</div>
+
+			<div>
+				<ul id="filelist"></ul>
 			</div>
 		</div>
 
+		<div>
+			<ul>
+				<li>The maximum file size for uploads in this demo is 5 MB (default file size is unlimited).</li>
+				<li>Uploaded files will be deleted automatically after 10 minutes.</li>
+			</ul>
+		</div>
 		<!-- for develope //-->
 		<script>
 				var require = {
@@ -69,7 +76,8 @@
 								"bootstrap": "//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min"
 						},
 						shim: {
-						}
+						},
+						urlArgs: "bust=" + (new Date()).getTime()
 				};
 		</script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>

@@ -3,6 +3,7 @@
 
 import os
 import codecs
+import json
 
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, Response
@@ -21,20 +22,25 @@ def allowed_file(filename):
 
 def put():
   if request.method == 'POST':
-    file = request.files['file']
-
-    if file and allowed_file(file.filename):
-      filename = secure_filename(file.filename)
+  
+    files = []
+    
+    for file in request.files.getlist('file'):
+      print(file)
       
-      path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-      #file.save(path)
-      #return redirect(url_for('get', filename=filename))
-      
-      # save to mongodb
-      db = MongoClient(app.config['MONGO_HOST'], app.config['MONGO_PORT'])
-      fs = gridfs.GridFS(db.thunderfs, collection=app.config['MONGO_COLLECTION'])
-      result = fs.put(file, filename=filename)
-      return str(result), 200
+      if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        
+        #path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        #file.save(path)
+        #return redirect(url_for('get', filename=filename))
+        
+        # save to mongodb
+        db = MongoClient(app.config['MONGO_HOST'], app.config['MONGO_PORT'])
+        fs = gridfs.GridFS(db.thunderfs, collection=app.config['MONGO_COLLECTION'])
+        files.append({ 'id': str(fs.put(file, filename=filename)), 'filename': filename })
+        
+    return json.dumps({ 'files': files  }), 200
 
   return '', 500
 

@@ -1,72 +1,17 @@
 /* js/tunderfs.js */
 require(["jquery"], function ($) { // jquery load first
 
-  require(["thunderfs.progress"], function (progress) { // thunderfs modules
+    require(["thunderfs.list", "thunderfs.upload", "thunderfs.dragdrop"], function (list, upload, dragdrop) { // thunderfs modules
 
-    var uploadFilesHandler = function (event) {
-      event.stopPropagation(); // Stop stuff happening
-      event.preventDefault(); // Totally stop stuff happening
+        list.init("#filelist");
 
-      // START A LOADING SPINNER HERE
+        var options = { url: "/put", type: "POST", dataType: "json" };
+        var _uploadCallback = function(filelist, data) {
+            filelist.complete(data);
+        };
 
-	    var form = new FormData();
-	    var files = event.target.files;
+        upload.init("#fileupload", list, options, _uploadCallback);
 
-	    $.each(files, function(key, value) {
-		    form.append('file', value);
-	    });
-
-      progress.init("#progress");
-
-      $.ajax({
-        xhr: function() {
-          var xhr = new window.XMLHttpRequest();
-          var progressEventListener = function(evt) {
-              if (evt.lengthComputable) {
-                  var percentComplete = evt.loaded / evt.total;
-                  progress.set((percentComplete * 100).toFixed(1));
-              }
-          };
-
-          xhr.upload.addEventListener("progress", progressEventListener, false);
-          xhr.addEventListener("progress",progressEventListener, false);
-
-           return xhr;
-        },
-        url: "/put",
-        type: "POST",
-        data: form,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        beforeSend: function(){
-            progress.set(0);
-        },
-        success: function(data, textStatus, jqXHR) {
-	        if(typeof data.error === "undefined") {
-		        // Success so call function to process the form
-		        console.log("SUCCESS: " + data.success);
-	        }else {
-		        // Handle errors here
-		        console.log("ERRORS: " + data.error);
-	        }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-	        // Handle errors here
-	        console.log("ERRORS: " + textStatus);
-        },
-        complete: function() {
-	        // STOP LOADING SPINNER
-        }
-      });
-    }
-
-    $("#fileupload").bind("change", uploadFilesHandler);
-    /*$("#fileupload").bind("change", function(evt) {
-      var files = evt.target.files;
-      var file = files[0];
-      console.log(file.name);
-    });*/
-  });
+        dragdrop.init("body", upload);
+    });
 });
