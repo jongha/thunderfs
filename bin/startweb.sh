@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-/usr/local/bin/uwsgi --ini /opt/thunderfs/conf/uwsgi.ini
+/usr/local/bin/uwsgi --ini /thunderfs/conf/uwsgi.ini

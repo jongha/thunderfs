@@ -38,7 +38,9 @@ def put():
         # save to mongodb
         db = MongoClient(app.config['MONGO_HOST'], app.config['MONGO_PORT'])
         fs = gridfs.GridFS(db.thunderfs, collection=app.config['MONGO_COLLECTION'])
-        files.append({ 'id': str(fs.put(file, filename=filename)), 'filename': filename })
+        id = fs.put(file, filename=filename)
+        
+        files.append({ 'id': str(filename), 'filename': filename })
         
     return json.dumps({ 'files': files  }), 200
 
@@ -48,7 +50,11 @@ def get(id):
   db = MongoClient(app.config['MONGO_HOST'], app.config['MONGO_PORT'])
   fs = gridfs.GridFS(db.thunderfs, collection=app.config['MONGO_COLLECTION'])
   
+  file = fs.get(ObjectId(id))
   return Response(
-    fs.get(ObjectId(id)).read(), 
-    mimetype='application/octet-stream'
+    file.read(), 
+    headers = { 
+      'Content-Type': 'application/octet-stream',
+      'Content-Disposition': 'attachment; filename=' + file.filename
+      }
     )

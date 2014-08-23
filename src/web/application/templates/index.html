@@ -7,12 +7,13 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link rel="icon" href="../../favicon.ico">
-
 		<title>10away</title>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
 
 		<!-- for develope //-->
 		<link rel="stylesheet/less" type="text/css" href="/static/src/less/thunderfs.less">
@@ -20,10 +21,7 @@
 		<!-- for production
 		<link rel="stylesheet" type="text/css" href="/static/css/thunderfs.min.css">
 		//-->
-
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
-
+		
 		<!-- for develope //-->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
 
@@ -37,43 +35,88 @@
 	</head>
 
 	<body>
-		<div class="container">
-			<h1></h1>
-
-			<blockquote>
-					<p></p>
-			</blockquote>
-		</div>
-
-		<div class="container">
-			<div class="text-center" id="dragdrop">
-				<span class="btn btn-success fileinput-button">
-					<h6>
-						<i class="fa fa-cloud-upload"></i>
-						<span>Select files...</span>
-					</h6>
-					<input id="fileupload" type="file" name="files[]" multiple="multiple" />
-				</span>
-			</div>
-
-			<div>
-				<ul id="filelist"></ul>
-			</div>
-		</div>
-
-		<div>
-			<ul>
-				<li>The maximum file size for uploads in this demo is 5 MB (default file size is unlimited).</li>
-				<li>Uploaded files will be deleted automatically after 10 minutes.</li>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">10AWAY</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    	
+		<div class="col-md-1"></div>
+		
+		<div class="container col-md-10">
+			<h1 class="page-header">파일 업로드</h1>
+      
+      <div>
+        <div class="text-center">
+				  <span class="btn btn-success fileinput-button">
+					  <i class="fa fa-cloud-upload"></i>
+					  <span>파일 선택...</span>
+					  <input id="fileupload" type="file" name="files[]" multiple="multiple" />
+				  </span>
+			  </div>
+			  
+		    <div id="filelist" class="text-center">
+			    <h1 id="filedesc"><i class="fa fa-paste"></i> 여기로 파일을 드래그 해주세요.</h1>
+		    </div>
+		    
+        <div class="progress-clone radial-progress text-left" data-progress="0">
+          <div class="circle">
+	          <div class="mask full">
+		          <div class="fill"></div>
+	          </div>
+	          <div class="mask half">
+		          <div class="fill"></div>
+		          <div class="fill fix"></div>
+	          </div>
+	          <div class="shadow"></div>
+          </div>
+          <div class="inset">
+	          <div class="percentage">
+		          <div class="numbers"><span>-</span><span>0%</span><span>1%</span><span>2%</span><span>3%</span><span>4%</span><span>5%</span><span>6%</span><span>7%</span><span>8%</span><span>9%</span><span>10%</span><span>11%</span><span>12%</span><span>13%</span><span>14%</span><span>15%</span><span>16%</span><span>17%</span><span>18%</span><span>19%</span><span>20%</span><span>21%</span><span>22%</span><span>23%</span><span>24%</span><span>25%</span><span>26%</span><span>27%</span><span>28%</span><span>29%</span><span>30%</span><span>31%</span><span>32%</span><span>33%</span><span>34%</span><span>35%</span><span>36%</span><span>37%</span><span>38%</span><span>39%</span><span>40%</span><span>41%</span><span>42%</span><span>43%</span><span>44%</span><span>45%</span><span>46%</span><span>47%</span><span>48%</span><span>49%</span><span>50%</span><span>51%</span><span>52%</span><span>53%</span><span>54%</span><span>55%</span><span>56%</span><span>57%</span><span>58%</span><span>59%</span><span>60%</span><span>61%</span><span>62%</span><span>63%</span><span>64%</span><span>65%</span><span>66%</span><span>67%</span><span>68%</span><span>69%</span><span>70%</span><span>71%</span><span>72%</span><span>73%</span><span>74%</span><span>75%</span><span>76%</span><span>77%</span><span>78%</span><span>79%</span><span>80%</span><span>81%</span><span>82%</span><span>83%</span><span>84%</span><span>85%</span><span>86%</span><span>87%</span><span>88%</span><span>89%</span><span>90%</span><span>91%</span><span>92%</span><span>93%</span><span>94%</span><span>95%</span><span>96%</span><span>97%</span><span>98%</span><span>99%</span><span>100%</span></div>
+	          </div>
+          </div>
+        </div>			    
+		    
+      </div>
+			  
+			
+			<ul class="p10">
+				<li>최대 4GB의 파일을 업로드 할 수 있습니다.</li>
+				<li>업로드한 파일은 10분후 삭제됩니다.</li>
 			</ul>
 		</div>
+		
+		<div class="col-md-1"></div>
+		
+    <div class="footer">
+      <div class="container text-center">
+        <p class="text-muted">Copyright © 2014 - present Libsac. All Rights Reserved.</p>
+      </div>
+    </div>
+    		
 		<!-- for develope //-->
 		<script>
 				var require = {
 						baseUrl: "/static/src/js",
 						paths: {
 								"jquery": "//code.jquery.com/jquery-1.11.1.min",
-								"bootstrap": "//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min"
+								"bootstrap": "//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min",
+								"jquery.ellipsis": "/static/js/jquery.ellipsis.min"
 						},
 						shim: {
 						},

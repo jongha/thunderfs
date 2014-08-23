@@ -27,8 +27,7 @@ define(["jquery"], function ($) {
                 var _progressEventListener = function(event) {
 
                     if (event.lengthComputable) {
-                        var percentComplete = event.loaded / event.total;
-                        _list.progress(filelist, (percentComplete * 100).toFixed(1));
+                        _list.progress(filelist, event.loaded, event.total);
                     }
                 };
 
@@ -37,7 +36,7 @@ define(["jquery"], function ($) {
 
                 return xhr;
             },
-            url: _options.url,
+            url: _options.putURL || "/put",
             type: _options.type || "POST",
             data: form,
             cache: false,
@@ -45,7 +44,7 @@ define(["jquery"], function ($) {
             processData: false,
             dataType: _options.dataType || "json",
             beforeSend: function() {
-                _list.progress(filelist, 0);
+                _list.progress(filelist, 0, 0);
             },
             success: function(data, textStatus, jqXHR) {
                 if(typeof data.error === "undefined") {
@@ -77,6 +76,8 @@ define(["jquery"], function ($) {
         for(i=0; i<event.target.files.length; ++i) {
             uploadFiles(event.target.files[i]);
         }
+        
+        $(this).val("");
     }
 
     function init(selector, list, options, callback) {

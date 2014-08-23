@@ -12,7 +12,7 @@ app.config.update(dict(
     #SECRET_KEY='development key',
     #USERNAME='admin',
     #PASSWORD='default',
-    UPLOAD_FOLDER='/opt/upload',
+    UPLOAD_FOLDER='/tmp/upload',
     ALLOWED_EXTENSIONS=set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif']),
     MONGO_HOST='localhost',
     MONGO_PORT=27017,

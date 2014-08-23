@@ -1,8 +1,49 @@
 @charset "UTF-8";
 
+.gFontImport (@name, @weights, @subsets) {
+    @import url('http://fonts.googleapis.com/css?family=@{name}:@{weights}&subset=@{subsets}');
+}
+
+.gNanumFontImport () {
+    @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+}
+
+.gFontImport("Roboto",400,"");
+.gNanumFontImport();
+
+.lnk {
+  cursor: pointer;
+}
+
+body {
+  font-family: "MalgunGothic", "Nanum Gothic", "Roboto", serif !important;
+  margin-top: 60px;
+  padding-bottom: 60px;
+}
+
+.p10 { padding: 10px; }
+.margin-auto { margin: 0px auto; }
+.border { border: 1px solid #cccccc; }
+.pull-left  { float: left; }
+.pull-right { float: right; }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
 .fileinput-button {
   position: relative;
   overflow: hidden;
+}
+
+.container-border {
+  .border();
 }
 
 .fileinput-button {
@@ -19,10 +60,6 @@
   }
 }
 
-.progress {
-  margin: 10px 0px;
-}
-
 .ie9, ie8, ie7, ie6 {
   @media screen {
     .fileinput-button {
@@ -33,4 +70,191 @@
       }
     }
   }
+}
+
+#filelist {
+  border: 3px dashed #eee;
+  min-height: 200px;
+  margin: 10px auto;
+  overflow: hidden;
+  padding: 10px;
+  
+  ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+
+    li.active {
+      div.fileicon {
+        display: none;
+      }
+      
+      div.filelink {
+        display: none;
+      }
+    }
+    
+    li {
+      margin-bottom: 5px;
+      
+      .tile {
+        background-color: #eee;
+        border-radius: 6px;
+        min-height: 500px;
+        padding: 10px;
+        
+        .lnk();
+        
+        .filedelete {
+          text-align: right;
+        }
+        
+        div.filename {
+          font-size: 1em;
+          color: #428bca;
+          font-weight: strong;
+          word-break: break-word;
+          width: 100%;
+          margin: 0px auto;
+        }
+
+        div.fileicon {
+          font-size: 1em;
+        }
+        
+        div.filelink {
+          font-size: 1em;
+          color: #d9534f;
+          font-weight: strong;
+          word-break: break-word;
+          width: 100%;
+          margin: 0px auto;
+        }
+        
+        div.filesize {
+          font-size: 0.7em;
+        }
+      }
+    }
+  }
+}
+
+#filelist.active {
+  border: 3px dashed red;
+}
+
+#filelist.filled {
+  #filedesc {
+    display: none;
+  }
+}
+
+/* loading */
+.progress-clone {
+  display: none;
+}
+
+.radial-progress {
+	@circle-size: 180px;
+	@circle-background: #d6dadc;
+	@circle-color: #428bca;
+	@inset-size: 130px;
+	@inset-color: #fbfbfb;
+	@transition-length: 1s;
+	@shadow: 6px 6px 10px rgba(0,0,0,0.2);
+	@percentage-color: #428bca;
+	@percentage-font-size: 22px;
+	@percentage-text-width: 57px;
+
+	margin: 50px auto;
+	width:  @circle-size;
+	height: @circle-size;
+
+	background-color: @circle-background;
+	border-radius: 50%;
+	.circle {
+		.mask, .fill, .shadow {
+			width:    @circle-size;
+			height:   @circle-size;
+			position: absolute;
+			border-radius: 50%;
+		}
+		.shadow {
+			box-shadow: @shadow inset;
+		}
+		.mask, .fill {
+			-webkit-backface-visibility: hidden;
+			transition: -webkit-transform @transition-length;
+			transition: -ms-transform @transition-length;
+			transition: transform @transition-length;
+			border-radius: 50%;
+		}
+		.mask {
+			clip: rect(0px, @circle-size, @circle-size, @circle-size/2);
+			.fill {
+				clip: rect(0px, @circle-size/2, @circle-size, 0px);
+				background-color: @circle-color;
+			}
+		}
+	}
+	.inset {
+		width:       @inset-size;
+		height:      @inset-size;
+		position:    absolute;
+		margin-left: (@circle-size - @inset-size)/2;
+		margin-top:  (@circle-size - @inset-size)/2;
+
+		background-color: @inset-color;
+		border-radius: 50%;
+		box-shadow: @shadow;
+		.percentage {
+			height:   @percentage-font-size;
+			width:    @percentage-text-width;
+			overflow: hidden;
+
+			position: absolute;
+			top:      (@inset-size - @percentage-font-size) / 2;
+			left:     (@inset-size - @percentage-text-width) / 2;
+
+			line-height: 1;
+			.numbers {
+				margin-top: -@percentage-font-size;
+				transition: width @transition-length;
+				span {
+					width:          @percentage-text-width;
+					display:        inline-block;
+					vertical-align: top;
+					text-align:     center;
+					font-weight:    800;
+					font-size:      @percentage-font-size;
+					font-family:    "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+					color:          @percentage-color;
+				}
+			}
+		}
+	}
+
+	@i: 0;
+	@increment: 180deg / 100;
+	.loop (@i) when (@i <= 100) {
+		&[data-progress="@{i}"] {
+			.circle {
+				.mask.full, .fill {
+					-webkit-transform: rotate(@increment * @i);
+					-ms-transform: rotate(@increment * @i);
+					transform: rotate(@increment * @i);
+				}	
+				.fill.fix {
+					-webkit-transform: rotate(@increment * @i * 2);
+					-ms-transform: rotate(@increment * @i * 2);
+					transform: rotate(@increment * @i * 2);
+				}
+			}
+			.inset .percentage .numbers {
+				width: @i * @percentage-text-width + @percentage-text-width;
+			}
+		}
+		.loop(@i + 1);
+	}
+	.loop(@i);
 }
