@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+@brand-primary: #428bca;
+@brand-success: #5cb85c;
+@brand-info:    #5bc0de;
+@brand-warning: #f0ad4e;
+@brand-danger:  #d9534f;
+
 .gFontImport (@name, @weights, @subsets) {
     @import url('http://fonts.googleapis.com/css?family=@{name}:@{weights}&subset=@{subsets}');
 }
@@ -18,7 +24,6 @@
 body {
   font-family: "MalgunGothic", "Nanum Gothic", "Roboto", serif !important;
   margin-top: 60px;
-  padding-bottom: 60px;
 }
 
 .p10 { padding: 10px; }
@@ -26,14 +31,20 @@ body {
 .border { border: 1px solid #cccccc; }
 .pull-left  { float: left; }
 .pull-right { float: right; }
+.page-header { margin: 20px 0px 20px !important; }
+
+h1 { font-size: 32px !important; }
+h2 { font-size: 28px !important; }
+h3 { font-size: 24px !important; }
+h4 { font-size: 16px !important; }
+h5 { font-size: 14px !important; }
+h6 { font-size: 12px !important; }
 
 .footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
   background-color: #f5f5f5;
+  margin-top: 20px;
+  padding: 10px;
 }
 
 
@@ -79,6 +90,10 @@ body {
   overflow: hidden;
   padding: 10px;
   
+  @normal: 1em;
+  @small: 0.7em;
+  @large: 1.7em;
+  
   ul {
     list-style-type: none;
     padding: 0px;
@@ -97,42 +112,60 @@ body {
     li {
       margin-bottom: 5px;
       
+      dl {
+        text-align: left;
+        
+        dd {
+          padding: 5px;
+        }
+      }
+      
       .tile {
         background-color: #eee;
         border-radius: 6px;
-        min-height: 500px;
         padding: 10px;
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
         
-        .lnk();
+        dl {
+          float: left;
+        }
         
         .filedelete {
           text-align: right;
         }
         
-        div.filename {
-          font-size: 1em;
-          color: #428bca;
-          font-weight: strong;
-          word-break: break-word;
-          width: 100%;
-          margin: 0px auto;
-        }
-
-        div.fileicon {
-          font-size: 1em;
+        div.ttl {
+          font-weight: bold;
+          color: @brand-danger;
         }
         
         div.filelink {
-          font-size: 1em;
-          color: #d9534f;
-          font-weight: strong;
           word-break: break-word;
-          width: 100%;
           margin: 0px auto;
+          
+          button {
+            margin-right: 3px;
+          }
+          
+          textarea { 
+            width: 100%;
+          }
         }
         
+        div.filename {
+          word-break: break-word;
+          margin: 0px auto;
+          width: 120px;
+        }
+                
         div.filesize {
-          font-size: 0.7em;
+        }
+        
+        div.progress {
+          margin-right: 20px;
+          float: left;
         }
       }
     }
@@ -155,10 +188,10 @@ body {
 }
 
 .radial-progress {
-	@circle-size: 180px;
+	@circle-size: 130px;
 	@circle-background: #d6dadc;
 	@circle-color: #428bca;
-	@inset-size: 130px;
+	@inset-size: 100px;
 	@inset-color: #fbfbfb;
 	@transition-length: 1s;
 	@shadow: 6px 6px 10px rgba(0,0,0,0.2);
@@ -166,7 +199,7 @@ body {
 	@percentage-font-size: 22px;
 	@percentage-text-width: 57px;
 
-	margin: 50px auto;
+	margin: 10px auto;
 	width:  @circle-size;
 	height: @circle-size;
 

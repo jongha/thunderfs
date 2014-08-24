@@ -5,23 +5,19 @@ define(["jquery"], function ($) {
         _callback = null;
 
     var uploadFiles = function (file) {
-	    var form = new FormData();
+        var form = new FormData();
+        form.append("file", file);
         
         /*
-	    $.each(files, function(key, value) {
-		    form.append("file", value);
-	    });
+	      $.each(files, function(key, value) {
+		      form.append("file", value);
+	      });
         */
         
         // append to list and get progressbar.
         var filelist = null;
-        if(_list) {
-            filelist = _list.append(file);
-        }
         
-        form.append("file", file);
-
-        $.ajax({
+        var xhr = $.ajax({
             xhr: function() {
                 var xhr = new window.XMLHttpRequest();
                 var _progressEventListener = function(event) {
@@ -66,6 +62,10 @@ define(["jquery"], function ($) {
                 // STOP LOADING SPINNER
             }
         });
+        
+        if(_list) {
+            filelist = _list.append(file, xhr);
+        }
     };
 
     var _uploadFilesHandler = function(event) {

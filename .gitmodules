@@ -1,3 +1,6 @@
 [submodule "src/web/libs/jquery-ellipsis"]
 	path = src/web/libs/jquery-ellipsis
 	url = https://github.com/STAR-ZERO/jquery-ellipsis.git
+[submodule "src/web/libs/jQuery-Knob"]
+	path = src/web/libs/jQuery-Knob
+	url = https://github.com/aterrien/jQuery-Knob.git
