@@ -4,3 +4,6 @@
 [submodule "src/web/libs/jQuery-Knob"]
 	path = src/web/libs/jQuery-Knob
 	url = https://github.com/aterrien/jQuery-Knob.git
+[submodule "src/web/libs/zeroclipboard"]
+	path = src/web/libs/zeroclipboard
+	url = https://github.com/zeroclipboard/zeroclipboard.git

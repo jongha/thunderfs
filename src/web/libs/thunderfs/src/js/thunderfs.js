@@ -10,8 +10,10 @@ require(["jquery"], function ($) { // jquery load first
             dataType: "json",
             ttl: 600,
             kakaoAPI: "2993c26d5c1f052494b9610b45340a30",
-            res: {
-                TTL: "남은시간(초)",
+            resources: {
+                DRAG: "여기로 파일을 드래그 해주세요.",
+                TTL: "남은시간",
+                TTL_DESC: "초 후에 삭제됩니다.",
                 FILE: "파일명",
                 SIZE: "파일크기",
                 LINK: "파일링크",
@@ -19,7 +21,7 @@ require(["jquery"], function ($) { // jquery load first
             }
         };
         
-        list.init("#filelist", ".progress-clone", options);
+        list.init(".filelist", ".progress-clone", options);
 
         var _uploadCallback = function(filelist, data) {
             filelist.complete(data);
@@ -27,6 +29,6 @@ require(["jquery"], function ($) { // jquery load first
 
         upload.init(".fileupload", list, options, _uploadCallback);
 
-        dragdrop.init("#filelist", upload);
+        dragdrop.init(".filelist", upload);
     });
 });

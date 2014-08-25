@@ -1,5 +1,5 @@
 /* js/tunderfs.list.js */
-define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, share) {
+define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"], function ($, ellipsis, share, capability) {
     var _list = null;
     var _progress = null;
     var _list_ul = null;
@@ -18,6 +18,19 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, 
             var data = $(".ellipsis").data("filename");
             $(".ellipsis").html(data).ellipsis({ position: "middle" });
         });
+        
+        if(capability.drag()) {
+            if(_list.length > 0) {
+                _list.append(
+                    $("<div></div>")
+                        .addClass("dragdesc")
+                        .append(options.resources.DRAG)
+                        .append(
+                            $("<div></div>").append($(".fileinput-button:first").clone())
+                        )
+                )
+            }
+        }
     };
     
     function append(file, xhr) {
@@ -25,7 +38,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, 
         if(_list) {
             if(_list_ul.length === 0) {
               _list_ul = $("<ul></ul>");
-              _list.append(_list_ul);
+              _list.empty().append(_list_ul);
             }
 
             var timer = null;
@@ -33,7 +46,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, 
                 .append($("<i></i>").addClass("glyphicon glyphicon-remove"))
                 .addClass("filedelete lnk")
                 .bind("click", function() {
-                    if(confirm(_options.res.REALLY_DELETE)) {
+                    if(confirm(_options.resources.REALLY_DELETE)) {
                         if(timer) {
                             clearInterval(timer);
                             timer = null;
@@ -47,7 +60,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, 
 
             var ttl = $("<div></div>")
                 .addClass("ttl")
-                .html(_options.ttl);
+                .append($("<span></span>").addClass("ttl-remain").html(_options.ttl));
                                 			    
             var filename = $("<div></div>")
                 .html(file.name)
@@ -55,7 +68,12 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, 
                 .addClass("filename ellipsis");
                      
             var filelink = $("<div></div>")
-                .addClass("filelink alert alert-danger")
+                .addClass("filelink")
+                .append($("<strong></strong>").html(_options.resources.LINK))
+                .append(
+                    $("<div></div>")
+                        .addClass("filelink-cont alert alert-danger")
+                )
                 .hide();
                 
             var filesize = $("<div></div>")
@@ -71,15 +89,14 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, 
                         .append(progress)
                         .append(
                             $("<dl></dl>")
-                                .append($("<dt>" + _options.res.TTL + "</dt>"))
+                                .append($("<dt>" + _options.resources.TTL + "</dt>"))
                                 .append($("<dd></dd>").append(ttl))                              
-                                .append($("<dt>" + _options.res.FILE + "</dt>"))
+                                .append($("<dt>" + _options.resources.FILE + "</dt>"))
                                 .append($("<dd></dd>").append(filename))
-                                .append($("<dt>" + _options.res.SIZE + "</dt>"))
+                                .append($("<dt>" + _options.resources.SIZE + "</dt>"))
                                 .append($("<dd></dd>").append(filesize))                               
                         )
                         .append($("<div></div>").addClass("clearfix"))
-                        .append($("<strong></strong>").html(_options.res.LINK))
                         .append(filelink)
                     )
                 .addClass("active");
@@ -94,10 +111,9 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, 
                 var url = location.protocol + "//" + location.host + (_options.getURL || "/get") + "/" + file.id;
                 
                 filelink
-                    .append(
-                        share.get(file.filename, url)   
-                    )                                                                        
-                    .show();
+                    .show()
+                    .find(".filelink-cont")
+                        .append(share.get(file.filename, url)) ;                                                                   
                     
                 item.removeClass("active");
             };
@@ -148,7 +164,10 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, 
                     var percentage = parseInt((--ttl / _options.ttl) * 100);
                     
                     filelist.progress.attr({ "data-progress": percentage });
-                    filelist.ttl.html(ttl);
+                    filelist.ttl
+                        .empty()
+                        .append($("<span></span>").addClass("ttl-remain").html(ttl))
+                        .append($("<span></span>").addClass("ttl-desc").html(_options.resources.TTL_DESC));
                     
                     if(ttl === 0 || ttl < 0) {
                         clearInterval(filelist.timer);
@@ -158,7 +177,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share"], function ($, ellipsis, 
                 }, 1000);
             }            
             
-            filelist.filesize.html(bytesToSize(loaded) + " / " + bytesToSize(total));
+            filelist.filesize.html(bytesToSize(loaded));
         }
     };
 

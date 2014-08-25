@@ -1,0 +1,10 @@
+.gFontImport (@name, @weights, @subsets) {
+    @import url('http://fonts.googleapis.com/css?family=@{name}:@{weights}&subset=@{subsets}');
+}
+
+.gNanumFontImport () {
+    @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+}
+
+.gFontImport("Roboto",400,"");
+.gNanumFontImport();

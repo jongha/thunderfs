@@ -1,0 +1,111 @@
+/* file list style */
+.filelist {
+  border: 3px dashed #eee;
+  min-height: 200px;
+  margin: 10px auto;
+  overflow: hidden;
+  padding: 10px;
+
+  @normal: 1em;
+  @small: 0.7em;
+  @large: 1.7em;
+
+  ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+
+    li.active {
+      div.filelink {
+        display: none;
+      }
+    }
+
+    li {
+      margin-bottom: 5px;
+
+      dl {
+        text-align: left;
+
+        dd {
+          padding: 5px;
+        }
+      }
+
+      .tile {
+        background-color: #eee;
+        border-radius: 6px;
+        padding: 10px;
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+        min-width: 230px;
+
+        dl {
+          float: left;
+        }
+
+        .filedelete {
+          text-align: right;
+        }
+
+        div.ttl {
+          .ttl-remain {
+            font-weight: bold;
+            color: @brand-danger;
+          }
+          
+          .ttl-desc {
+            font-size: @font-size-small;
+          }
+        }
+
+        div.filelink {
+          word-break: break-word;
+          margin: 0px auto;
+
+          button {
+            margin-right: 3px;
+          }
+
+          textarea {
+            width: 100%;
+          }
+        }
+
+        div.filename {
+          word-break: break-word;
+          margin: 0px auto;
+          width: 120px;
+          font-size: @font-size-small;
+        }
+
+        div.filesize {
+          font-size: @font-size-small;
+        }
+
+        div.progress {
+          margin-right: 20px;
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+.filelist.active {
+  border: 3px dashed red;
+}
+
+.filelist.filled {
+  .filedesc {
+    display: none;
+  }
+}
+
+
+/* drag desc */
+.dragdesc {
+  text-align: center;
+  padding: 50px 0px;
+}
