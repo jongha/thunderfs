@@ -15,6 +15,7 @@ from pymongo import MongoClient
 import gridfs
 
 from bson import ObjectId
+from time import gmtime, strftime
 
 def allowed_file(filename):
   return True # all allowed
@@ -29,7 +30,10 @@ def put():
       print(file)
       
       if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
+         
+        org_filename = file.filename
+        filename = secure_filename(org_filename)
+        mongo_filename = '%s/%s' % (strftime('%Y/%m/%d/%H/%M/%S', gmtime()), filename)
         
         #path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         #file.save(path)
@@ -38,9 +42,13 @@ def put():
         # save to mongodb
         db = MongoClient(app.config['MONGO_HOST'], app.config['MONGO_PORT'])
         fs = gridfs.GridFS(db.thunderfs, collection=app.config['MONGO_COLLECTION'])
-        id = fs.put(file, filename=filename)
+        id = fs.put(file, filename=mongo_filename)
         
-        files.append({ 'id': str(filename), 'filename': filename })
+        files.append({ 
+          'host': request.headers['Host'],
+          'link': '/get/' + mongo_filename, 
+          'filename': org_filename,
+          })
         
     return json.dumps({ 'files': files  }), 200
 

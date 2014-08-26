@@ -1,92 +1,90 @@
 /* file list style */
-.filelist {
-  border: 3px dashed #eee;
-  min-height: 200px;
-  margin: 10px auto;
-  overflow: hidden;
-  padding: 10px;
+.container {
+  max-width: 50%;
+  min-width: 310px;
+  
+  .filelist {
+    border: 3px dashed #eee;
+    min-height: 200px;
+    margin: 10px auto;
+    overflow: hidden;
+    padding: 10px;
+    
+    @normal: 1em;
+    @small: 0.7em;
+    @large: 1.7em;
 
-  @normal: 1em;
-  @small: 0.7em;
-  @large: 1.7em;
+    ul {
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px;
 
-  ul {
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-
-    li.active {
-      div.filelink {
-        display: none;
-      }
-    }
-
-    li {
-      margin-bottom: 5px;
-
-      dl {
-        text-align: left;
-
-        dd {
-          padding: 5px;
+      li.active {
+        div.filelink {
+          display: none;
         }
       }
 
-      .tile {
-        background-color: #eee;
-        border-radius: 6px;
-        padding: 10px;
-        width: 100%;
-        float: left;
-        margin-bottom: 10px;
-        min-width: 230px;
+      li {
+        margin-bottom: 5px;
 
         dl {
-          float: left;
-        }
+          text-align: left;
 
-        .filedelete {
-          text-align: right;
-        }
-
-        div.ttl {
-          .ttl-remain {
-            font-weight: bold;
-            color: @brand-danger;
+          dd {
+            padding: 5px;
           }
-          
-          .ttl-desc {
+        }
+
+        .tile {
+          background-color: #eee;
+          border-radius: 6px;
+          padding: 20px 10px;
+          width: 100%;
+          margin-bottom: 10px;
+
+          .filedelete {
+            text-align: right;
+          }
+
+          div.ttl {
+            .ttl-remain {
+              font-weight: bold;
+              color: @brand-danger;
+            }
+            
+            .ttl-desc {
+              font-size: @font-size-small;
+            }
+          }
+
+          div.filelink {
+            word-break: break-word;
+            border-radius: 6px;
+            text-align: center;
+            margin: 10px 0px;
+            
+            button {
+              margin-right: 3px;
+            }
+
+            textarea {
+              width: 100%;
+            }
+          }
+
+          div.filename {
+            word-break: break-word;
+            /*width: 120px;*/
             font-size: @font-size-small;
           }
-        }
 
-        div.filelink {
-          word-break: break-word;
-          margin: 0px auto;
-
-          button {
-            margin-right: 3px;
+          div.filesize {
+            font-size: @font-size-small;
           }
 
-          textarea {
-            width: 100%;
+          div.progress {
           }
-        }
-
-        div.filename {
-          word-break: break-word;
-          margin: 0px auto;
-          width: 120px;
-          font-size: @font-size-small;
-        }
-
-        div.filesize {
-          font-size: @font-size-small;
-        }
-
-        div.progress {
-          margin-right: 20px;
-          float: left;
         }
       }
     }

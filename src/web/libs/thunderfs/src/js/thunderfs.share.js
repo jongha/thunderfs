@@ -1,21 +1,10 @@
 /* js/tunderfs.share.js */
 define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($, kakao, capability, ZeroClipboard) {
     var _options = null;
-    var _textarea = null;
-    var _clipboard = null;
-    
-    var _init = {};
+    var _html = null;
+    var __link = null;
 
-    function setText(val) {
-        if(_textarea) {
-            _textarea.val(val);
-        }
-        
-        if(_clipboard) {
-            _clipboard.setText(val);
-        }
-    };
-    
+    var _init = {};
     function clickHandler() {
         var type = $(this).data("type");
         var url = $(this).data("url");
@@ -25,15 +14,25 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
             case "copy":
                 break;
 
+            case "link":
+                if(_html) { _html.hide(); }
+                if(_link) { _link.show(); }
+                break;
+
             case "html":
-                setText("<a href=\"" + url + "\" target=\"_blank\">" + filename + "</a>");
+                if(_link) { _link.hide(); }
+                if(_html) { _html.show(); }
                 break;
 
             case "email":
-                location.href = "mailto:?subject=10away share file&body=Filename: " + filename + "%0D%0AURL: " + url;
+                location.href = "mailto:" +
+                    "?subject=" + _options.resources.SEND_MAIL_SUBJECT.format(filename, url) +
+                    "&body=" + _options.resources.SEND_MAIL_BODY.format(filename, url);
+
                 break;
 
             case "kakaotalk":
+                // https://developers.kakao.com/docs/js-reference
                 if(!!!_init.kakao) {
                     _init.kakao = true;
                     Kakao.init(_options.kakaoAPI);
@@ -46,46 +45,59 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
     };
 
     function init(options) {
-        _options = options;
+        _options = $.extend({}, options);
     };
 
     function get(filename, url) {
-        _textarea = $("<textarea />")
+        _link = $("<textarea />")
+            .attr({ "rows": 2, "wrap": "off" })
+            .val(url)
+            .hide();
+
+        _html = $("<textarea />")
             .attr({ "rows": 3, "wrap": "off" })
-            .data({ "filename": filename });
+            .val("<a href=\"" + url + "\" target=\"_blank\">" + filename + "</a>")
+            .hide();
 
-        var pane = $("<div></div>").addClass("text-right")
-            .append(_textarea);
-
+        var copy = null;
         if(!capability.mobile()) {
-            var clip = $("<button></button>")
-                    .attr({ "type": "button" })
-                    .addClass("btn btn-xs btn-link")
-                    .append($("<i></i>").addClass("fa fa-clipboard"))
-                    .append(" Copy")
-                    .data({ "type": "copy", "url": url, "filename": filename })
-                    .bind("click", clickHandler);
-            
-            pane.append(clip);
+            copy = $("<button></button>")
+                .attr({ "type": "button" })
+                .addClass("btn btn-xs btn-danger")
+                .append($("<i></i>").addClass("fa fa-clipboard"))
+                .append(" " + _options.resources.COPY_LINK)
+                .data({ "type": "copy", "url": url, "filename": filename })
+                .bind("click", clickHandler);
+        };
 
-            _clipboard = new ZeroClipboard(clip[0]); // click to clipboard
-        }
-
-        pane.append(
+        var pane = $("<div></div>")
+            .append(_link)
+            .append(_html)
+            .append(copy)
+            .append(
                 $("<button></button>")
                     .attr({ "type": "button" })
-                    .addClass("btn btn-xs btn-link")
+                    .addClass("btn btn-xs btn-danger")
+                    .append($("<i></i>").addClass("fa fa-link"))
+                    .append(" " + _options.resources.SEND_LINK)
+                    .data({ "type": "link", "url": url, "filename": filename })
+                    .bind("click", clickHandler)
+            )
+            .append(
+                $("<button></button>")
+                    .attr({ "type": "button" })
+                    .addClass("btn btn-xs btn-primary")
                     .append($("<i></i>").addClass("fa fa-code"))
-                    .append(" HTML")
+                    .append(" " + _options.resources.SEND_HTML)
                     .data({ "type": "html", "url": url, "filename": filename })
                     .bind("click", clickHandler)
             )
             .append(
                 $("<button></button>")
                     .attr({ "type": "button" })
-                    .addClass("btn btn-xs btn-link")
+                    .addClass("btn btn-xs btn-primary")
                     .append($("<i></i>").addClass("fa fa-envelope-o"))
-                    .append(" E-mail")
+                    .append(" " + _options.resources.SEND_MAIL)
                     .data({ "type": "email", "url": url, "filename": filename })
                     .bind("click", clickHandler)
             );
@@ -94,16 +106,18 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
             pane.append(
                 $("<button></button>")
                     .attr({ "type": "button" })
-                    .addClass("btn btn-xs btn-link")
+                    .addClass("btn btn-xs btn-warning")
                     .append($("<i></i>").addClass("fa fa-share-alt"))
-                    .append(" Kakao Talk")
+                    .append(" " + _options.resources.SEND_KAKAOTALK)
                     .data({ "type": "kakaotalk", "url": url, "filename": filename })
                     .bind("click", clickHandler)
             );
         }
 
-        setText(url);
-        
+        if(!!copy) {
+            var clipboard = new ZeroClipboard(copy[0]);
+            clipboard.setText(url);
+        }
         return pane;
     };
 

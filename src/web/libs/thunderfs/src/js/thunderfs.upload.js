@@ -7,16 +7,16 @@ define(["jquery"], function ($) {
     var uploadFiles = function (file) {
         var form = new FormData();
         form.append("file", file);
-        
+
         /*
 	      $.each(files, function(key, value) {
 		      form.append("file", value);
 	      });
         */
-        
+
         // append to list and get progressbar.
         var filelist = null;
-        
+
         var xhr = $.ajax({
             xhr: function() {
                 var xhr = new window.XMLHttpRequest();
@@ -62,7 +62,7 @@ define(["jquery"], function ($) {
                 // STOP LOADING SPINNER
             }
         });
-        
+
         if(_list) {
             filelist = _list.append(file, xhr);
         }
@@ -76,13 +76,14 @@ define(["jquery"], function ($) {
         for(i=0; i<event.target.files.length; ++i) {
             uploadFiles(event.target.files[i]);
         }
-        
+
         $(this).val("");
     }
 
     function init(selector, list, options, callback) {
+        _options = $.extend({}, options);
+
         _list = list;
-        _options = options;
         _callback = callback;
 
         $(selector).bind("change", _uploadFilesHandler);
