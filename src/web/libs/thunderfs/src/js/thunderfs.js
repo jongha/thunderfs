@@ -13,8 +13,14 @@ require(["jquery"], function ($) { // jquery load first
             };
         }
 
+        var servers = [
+            "file1.10away.net",
+            "file2.10away.net",
+            "file3.10away.net"
+        ];
+        
         var options = {
-            putURL: "//file1.10away.net/put",
+            putURL: "//" + servers[0] + "/put",
             getURL: "/get",
             type: "POST",
             dataType: "json",
@@ -22,7 +28,6 @@ require(["jquery"], function ($) { // jquery load first
             kakaoAPI: "2993c26d5c1f052494b9610b45340a30",
             resources: {
                 COPY_LINK: "링크 복사",
-                SEND_LINK: "링크 보기",
                 SEND_HTML: "HTML 보기",
                 SEND_MAIL: "메일 보내기",
                 SEND_MAIL_SUBJECT: "[10away] 파일을 공유합니다.",

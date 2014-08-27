@@ -2,7 +2,6 @@
 define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($, kakao, capability, ZeroClipboard) {
     var _options = null;
     var _html = null;
-    var __link = null;
 
     var _init = {};
     function clickHandler() {
@@ -14,13 +13,7 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
             case "copy":
                 break;
 
-            case "link":
-                if(_html) { _html.hide(); }
-                if(_link) { _link.show(); }
-                break;
-
             case "html":
-                if(_link) { _link.hide(); }
                 if(_html) { _html.show(); }
                 break;
 
@@ -49,11 +42,6 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
     };
 
     function get(filename, url) {
-        _link = $("<textarea />")
-            .attr({ "rows": 2, "wrap": "off" })
-            .val(url)
-            .hide();
-
         _html = $("<textarea />")
             .attr({ "rows": 3, "wrap": "off" })
             .val("<a href=\"" + url + "\" target=\"_blank\">" + filename + "</a>")
@@ -63,7 +51,7 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
         if(!capability.mobile()) {
             copy = $("<button></button>")
                 .attr({ "type": "button" })
-                .addClass("btn btn-xs btn-danger")
+                .addClass("btn btn-sm btn-danger")
                 .append($("<i></i>").addClass("fa fa-clipboard"))
                 .append(" " + _options.resources.COPY_LINK)
                 .data({ "type": "copy", "url": url, "filename": filename })
@@ -71,22 +59,23 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
         };
 
         var pane = $("<div></div>")
-            .append(_link)
+            .append($("<div></div>").addClass("clearfix"))
+            .append(
+                $("<div></div>")
+                  .addClass("text-center filelink-url")
+                  .append(
+                    $("<a></a>")
+                        .addClass("alert alert-danger")
+                        .attr({ "target": "_blank", "href": url })
+                        .html(url)
+                    )
+            )
             .append(_html)
             .append(copy)
             .append(
                 $("<button></button>")
                     .attr({ "type": "button" })
-                    .addClass("btn btn-xs btn-danger")
-                    .append($("<i></i>").addClass("fa fa-link"))
-                    .append(" " + _options.resources.SEND_LINK)
-                    .data({ "type": "link", "url": url, "filename": filename })
-                    .bind("click", clickHandler)
-            )
-            .append(
-                $("<button></button>")
-                    .attr({ "type": "button" })
-                    .addClass("btn btn-xs btn-primary")
+                    .addClass("btn btn-sm btn-primary")
                     .append($("<i></i>").addClass("fa fa-code"))
                     .append(" " + _options.resources.SEND_HTML)
                     .data({ "type": "html", "url": url, "filename": filename })
@@ -95,7 +84,7 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
             .append(
                 $("<button></button>")
                     .attr({ "type": "button" })
-                    .addClass("btn btn-xs btn-primary")
+                    .addClass("btn btn-sm btn-primary")
                     .append($("<i></i>").addClass("fa fa-envelope-o"))
                     .append(" " + _options.resources.SEND_MAIL)
                     .data({ "type": "email", "url": url, "filename": filename })
@@ -106,7 +95,7 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
             pane.append(
                 $("<button></button>")
                     .attr({ "type": "button" })
-                    .addClass("btn btn-xs btn-warning")
+                    .addClass("btn btn-sm btn-warning")
                     .append($("<i></i>").addClass("fa fa-share-alt"))
                     .append(" " + _options.resources.SEND_KAKAOTALK)
                     .data({ "type": "kakaotalk", "url": url, "filename": filename })

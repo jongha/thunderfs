@@ -109,7 +109,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
 
             var complete = function(data) {
                 var file = data.files[0];
-                var url = location.protocol + "//" + file.host + file.link;
+                var url = file.link;
 
                 filelink
                     .show()

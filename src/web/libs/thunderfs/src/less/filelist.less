@@ -6,9 +6,9 @@
   .filelist {
     border: 3px dashed #eee;
     min-height: 200px;
-    margin: 10px auto;
+    margin: 0px auto;
     overflow: hidden;
-    padding: 10px;
+    padding: 2px;
     
     @normal: 1em;
     @small: 0.7em;
@@ -63,6 +63,13 @@
             border-radius: 6px;
             text-align: center;
             margin: 10px 0px;
+            
+            .filelink-url {
+              margin: 10px 0px 20px 0px;
+              a {
+                font-weight: bold;
+              }
+            }
             
             button {
               margin-right: 3px;

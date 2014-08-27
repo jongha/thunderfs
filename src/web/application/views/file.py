@@ -16,6 +16,7 @@ import gridfs
 
 from bson import ObjectId
 from time import gmtime, strftime
+from application.libs import shorten
 
 def allowed_file(filename):
   return True # all allowed
@@ -43,10 +44,11 @@ def put():
         db = MongoClient(app.config['MONGO_HOST'], app.config['MONGO_PORT'])
         fs = gridfs.GridFS(db.thunderfs, collection=app.config['MONGO_COLLECTION'])
         id = fs.put(file, filename=mongo_filename)
+        link = 'http://' + request.headers['Host'] + '/get/' + mongo_filename
+        shorten_link = shorten.get(link)
         
         files.append({ 
-          'host': request.headers['Host'],
-          'link': '/get/' + mongo_filename, 
+          'link': shorten_link, 
           'filename': org_filename,
           })
         
