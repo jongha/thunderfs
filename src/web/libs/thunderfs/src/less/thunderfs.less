@@ -20,12 +20,11 @@ h6 { font-size: @font-size-h6; }
 
 body {
   font-family: @font-family-base !important;
-  background-color: #F29727;
 }
 
 .body-header {
-  background-color: #B0382F;
-  padding: 0px 0px 20px 0px;
+  background-color: @content-background1;
+  padding: @content-padding;
   
   .home-title {
     color: #fff;
@@ -43,9 +42,28 @@ body {
 }
 
 .body-content {
-  float: left;
   width: 100%;
   padding: 20px 0px 100px 0px;
+  background-color: @content-background2;
+  min-height: @content-minheight;
+}
+
+.about-content {
+  min-height: @content-minheight;
+  background-color: @content-background3;
+  padding: @content-padding;
+}
+
+.opensource-content {
+  min-height: @content-minheight;
+  background-color: @content-background4;
+  padding: @content-padding;
+}
+
+.contact-content {
+  min-height: @content-minheight;
+  background-color: @content-background5;
+  padding: @content-padding;
 }
 
 .header-links {
@@ -56,7 +74,6 @@ body {
 
 .header-links a {
   display: inline-block;
-  margin: 0 10px;
-  text-decoration: none;
+  margin: 0 5px;
   color: #fff;
 }

@@ -19,17 +19,15 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
             $(".ellipsis").html(data).ellipsis({ position: "middle" });
         });
 
-        if(capability.drag()) {
-            if(_list.length > 0) {
-                _list.append(
-                    $("<div></div>")
-                        .addClass("dragdesc")
-                        .append(options.resources.DRAG)
-                        .append(
-                            $("<div></div>").append($(".fileinput-button:first").clone())
-                        )
-                )
-            }
+        if(_list.length > 0) {
+            _list.append(
+                $("<div></div>")
+                    .addClass("filedesc")
+                    .append(capability.drag() ? options.resources.DRAG : null)
+                    .append(
+                        $("<div></div>").append($(".fileinput-button:first").clone())
+                    )
+            )
         }
     };
 
@@ -38,7 +36,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
         if(_list) {
             if(_list_ul.length === 0) {
               _list_ul = $("<ul></ul>");
-              _list.empty().append(_list_ul);
+              _list.append(_list_ul);
             }
 
             var timer = null;
@@ -164,10 +162,10 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
                     var percentage = parseInt((--ttl / _options.ttl) * 100);
 
                     filelist.progress.attr({ "data-progress": percentage });
+                    
                     filelist.ttl
                         .empty()
-                        .append($("<span></span>").addClass("ttl-remain").html(ttl))
-                        .append($("<span></span>").addClass("ttl-desc").html(_options.resources.TTL_DESC));
+                        .append($("<span></span>").addClass("ttl-remain").html(ttl));
 
                     if(ttl === 0 || ttl < 0) {
                         clearInterval(filelist.timer);

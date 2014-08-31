@@ -1,0 +1,62 @@
+# Korean translations for PROJECT.
+# Copyright (C) 2014 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2014-08-31 07:49-0400\n"
+"PO-Revision-Date: 2014-08-31 07:49-0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: ko <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: application/views/index.py:11
+msgid "10away"
+msgstr "10away"
+
+#: application/views/index.py:12
+msgid "Fast and easy file sharing"
+msgstr "쉽고 빠른 파일 공유"
+
+msgid "Add files"
+msgstr "파일 추가"
+
+msgid "Copy link"
+msgstr "링크 복사"
+
+msgid "Show HTML"
+msgstr "HTML 보기"
+
+msgid "Send mail"
+msgstr "메일 보내기"
+
+msgid "[10away] File shared with you"
+msgstr "[10away] 파일을 공유합니다."
+
+msgid "Mail body"
+msgstr "파일명:{0}%%0D%%0A링크:{1}"
+
+msgid "Send KakaoTalk"
+msgstr "카카오톡으로 보내기"
+
+msgid "Drag files here"
+msgstr "여기로 파일을 드래그 해주세요"
+
+msgid "Time to live"
+msgstr "남은시간"
+
+msgid "File name"
+msgstr "파일명"
+
+msgid "File size"
+msgstr "파일크기"
+
+msgid "Are you sure you want to delete file"
+msgstr "정말로 파일을 삭제 하시겠습니까?"

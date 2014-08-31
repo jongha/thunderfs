@@ -4,6 +4,7 @@
 import os
 import sys
 from flask import Flask
+from flask.ext.babel import Babel
 
 app = Flask(__name__)
 app.config.update(dict(
@@ -17,9 +18,13 @@ app.config.update(dict(
     MONGO_HOST='localhost',
     MONGO_PORT=27017,
     MONGO_COLLECTION='fs',
+    
+    BABEL_DEFAULT_LOCALE='ko',
 ))
 
 app.debug = True
+
+babel = Babel(app)
 
 if os.getenv('FLASK_CONF') == 'DEV':
   app.config.from_object('application.settings.Development')

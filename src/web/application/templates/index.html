@@ -11,7 +11,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link rel="icon" href="../../favicon.ico">
-		<title>10away - 쉽고 빠른 파일 공유‎</title>
+		<title>{{ context['service.name'] }} - {{ context['service.slogan'] }}</title>
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
 
@@ -35,19 +35,22 @@
 	</head>
 
 	<body>
-		<div class="body-header">
+		<div class="body-header clearfix" id="header">
 			<div class="text-center">
 				<div class="header-links">
-					<a href="." class="selected">Home</a>
-					<a href="/contact">Contact</a>
+					<a href="#">Home</a>
+					<a href="#upload">Upload</a>
+					<a href="#about">About</a>
+					<a href="#opensource">Open Source</a>
+					<a href="#contact">Contact</a>
 				</div>
 
-				<h1 class="home-title"><span class="strong">10</span><span class="satisfy">away</span></h1>
+				<h1 class="home-title"><span class="strong lato">10</span><span class="satisfy">away</span></h1>
 				
-				<div class="home-subtitle text-center"><i class="fa fa-cloud-upload"></i> 쉽고 빠른 파일 공유
+				<div class="home-subtitle text-center"><i class="fa fa-cloud-upload"></i> {{ context['service.slogan'] }}
 					<span class="btn btn-success fileinput-button">
 							<i class="fa fa-cloud-upload"></i>
-							<span>파일 추가...</span>
+							<span>{{ context['file.add'] }}...</span>
 							<input class="fileupload" type="file" name="files[]" multiple="multiple" />
 					</span>
 				</div>
@@ -55,7 +58,7 @@
 			</div>
 		</div>
 
-		<div class="body-content">
+		<div class="body-content clearfix" id="upload">
 
 			<div class="col-sm-3"></div>
 
@@ -87,9 +90,22 @@
 			<div class="col-sm-3"></div>
 		</div>
 
-		<div class="clearfix"></div>
+    <div class="about-content text-center clearfix" id="about">
+      <h1>About</h1>
+      <p></p>
+    </div>
+    
+    <div class="opensource-content text-center clearfix" id="opensource">
+      <h1>Open Source</h1>
+      <p></p>
+    </div>
 
-    <div class="footer">
+    <div class="contact-content text-center clearfix" id="contact">
+      <h1>Contact</h1>
+      <p></p>
+    </div>
+
+    <div class="footer clearfix">
       <div class="container text-center">
         <p class="text-muted small">Copyright © 2014 - present Libsac. All Rights Reserved.</p>
       </div>
@@ -110,6 +126,24 @@
 						},
 						urlArgs: "bust=" + (new Date()).getTime()
 				};
+				
+        var settings = {
+            resources: {
+                COPY_LINK: "{{ context['copy.link'] }}",
+                SEND_HTML: "{{ context['show.html'] }}",
+                SEND_MAIL: "{{ context['send.mail'] }}",
+                SEND_MAIL_SUBJECT: "{{ context['send.mail.subject'] }}",
+                SEND_MAIL_BODY: "{{ context['send.mail.body'] }}",
+                SEND_KAKAOTALK: "{{ context['send.kakaotalk'] }}",
+
+                DRAG: "{{ context['file.draghere'] }}",
+                TTL: "{{ context['file.ttl'] }}",
+                TTL_DESC: "{{ context['file.ttl.desc'] }}",
+                FILE: "{{ context['file.name'] }}",
+                SIZE: "{{ context['file.size'] }}",
+                REALLY_DELETE: "{{ context['file.delete.confirm'] }}"
+            }
+        };				
 		</script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
 		<script src="/static/src/js/thunderfs.js"></script>
