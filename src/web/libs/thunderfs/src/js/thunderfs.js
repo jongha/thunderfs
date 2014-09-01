@@ -18,7 +18,7 @@ require(["jquery"], function ($) { // jquery load first
             "file2.10away.net",
             "file3.10away.net"
         ];
-        
+
         var default_settings = {
             putURL: "//" + servers[0] + "/put",
             getURL: "/get",
@@ -42,9 +42,9 @@ require(["jquery"], function ($) { // jquery load first
                 REALLY_DELETE: "정말로 삭제하시겠습니까?"
             }
         };
-        
+
         var options = $.extend(default_settings, settings);
-        
+
         list.init(".filelist", ".progress-clone", options);
 
         var _uploadCallback = function(filelist, data) {
