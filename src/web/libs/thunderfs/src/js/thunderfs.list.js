@@ -78,7 +78,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
             var item = function(title, body) {
                 return $("<div></div>")
                     .addClass("list-group-item")
-                    .append($("<h5></h5>").html(title))
+                    .append($("<h5></h5>").append($("<strong></strong>").html(title)))
                     .append($("<p></p>").append(body));
             };
 

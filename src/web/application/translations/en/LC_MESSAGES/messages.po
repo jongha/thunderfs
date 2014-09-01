@@ -37,8 +37,8 @@ msgstr "Show HTML"
 msgid "Send mail"
 msgstr "Send mail"
 
-msgid "[10away] File shared with you"
-msgstr "[10away] File shared with you"
+msgid "File shared with you"
+msgstr "File shared with you"
 
 msgid "Mail body"
 msgstr "File Name:{0}%%0D%%0ALink:{1}"

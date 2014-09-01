@@ -37,8 +37,8 @@ msgstr "HTML 보기"
 msgid "Send mail"
 msgstr "메일 보내기"
 
-msgid "[10away] File shared with you"
-msgstr "[10away] 파일을 공유합니다."
+msgid "File shared with you"
+msgstr "파일을 공유합니다."
 
 msgid "Mail body"
 msgstr "파일명:{0}%%0D%%0A링크:{1}"

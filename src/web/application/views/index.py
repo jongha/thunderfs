@@ -21,7 +21,7 @@ def main():
     'copy.link': gettext(u'Copy link'),
     'show.html': gettext(u'Show HTML'),
     'send.mail': gettext(u'Send mail'),
-    'send.mail.subject': gettext(u'[10away] File shared with you'),
+    'send.mail.subject': '[' + gettext(u'10away') + '] ' + gettext(u'File shared with you'),
     'send.mail.body': gettext(u'Mail body'),
     'send.kakaotalk': gettext(u'Send KakaoTalk'),
   }

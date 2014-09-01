@@ -13,13 +13,19 @@ app.config.update(dict(
     #SECRET_KEY='development key',
     #USERNAME='admin',
     #PASSWORD='default',
+    
+    BASE_DOMAIN='dev.10away.net',
     UPLOAD_FOLDER='/tmp/upload',
     ALLOWED_EXTENSIONS=set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif']),
+    
     MONGO_HOST='localhost',
     MONGO_PORT=27017,
-    MONGO_COLLECTION='fs',
     
-    BABEL_DEFAULT_LOCALE='ko',
+    MONGO_COLLECTION_FS='fs', # mongodb
+    MONGO_COLLECTION_NAME='names', # names
+    MONGO_COLLECTION_LINK='links', # links
+    
+    #BABEL_DEFAULT_LOCALE='ko',
 ))
 
 app.debug = True
