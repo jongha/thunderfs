@@ -1,0 +1,28 @@
+{
+  "name": "thunderfs",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">= 0.10.30"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-cssmin": "^0.10.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-less": "^0.11.4",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-lib-phantomjs": "^0.6.0",
+    "grunt-qunit-istanbul": "^0.4.5",
+    "grunt-shell": "^0.7.0",
+    "phantomjs": "^1.9.7-15"
+  },
+  "dependencies": {
+    "latest": "^0.1.2"
+  }
+}

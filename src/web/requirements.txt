@@ -1,0 +1,7 @@
+# Development environment pip requirements file
+# Install via 'pip install -r requirements.txt'
+
+jinja2
+simplejson
+google-api-python-client
+Flask-Babel

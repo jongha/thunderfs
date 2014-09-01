@@ -1,0 +1,115 @@
+/* file list style */
+.container {
+  max-width: 50%;
+  min-width: 310px;
+  
+  .filelist {
+    border: 3px dashed #eee;
+    min-height: 200px;
+    margin: 0px auto;
+    overflow: hidden;
+    padding: 2px;
+    
+    @normal: 1em;
+    @small: 0.7em;
+    @large: 1.7em;
+
+    ul {
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px;
+
+      li.active {
+        div.filelink {
+          display: none;
+        }
+      }
+
+      li {
+        margin-bottom: 5px;
+
+        dl {
+          text-align: left;
+
+          dd {
+            padding: 5px;
+          }
+        }
+
+        .tile {
+          background-color: #eee;
+          border-radius: 6px;
+          padding: 20px 10px;
+          width: 100%;
+          margin-bottom: 10px;
+
+          .filedelete {
+            text-align: right;
+          }
+
+          div.ttl {
+            .ttl-remain {
+              font-weight: bold;
+              color: @brand-danger;
+            }
+            
+            .ttl-desc {
+              font-size: @font-size-small;
+            }
+          }
+
+          div.filelink {
+            word-break: break-word;
+            border-radius: 6px;
+            text-align: center;
+            margin: 10px 0px;
+            
+            .filelink-url {
+              margin: 10px 0px 20px 0px;
+              a {
+                font-weight: bold;
+              }
+            }
+            
+            button {
+              margin: 3px;
+            }
+
+            textarea {
+              width: 100%;
+            }
+          }
+
+          div.filename {
+            word-break: break-word;
+            /*width: 120px;*/
+            font-size: @font-size-small;
+          }
+
+          div.filesize {
+            font-size: @font-size-small;
+          }
+
+          div.progress {
+          }
+        }
+      }
+    }
+  }
+}
+
+.filelist.active {
+  border: 3px dashed red;
+}
+
+.filelist.filled {
+  .filedesc {
+    display: none;
+  }
+}
+
+.filedesc {
+  text-align: center;
+  padding: 70px 0px;
+  color: #fff;
+}

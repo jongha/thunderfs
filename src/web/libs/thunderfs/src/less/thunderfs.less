@@ -1,0 +1,79 @@
+@import "variables.less";
+@import "webfont.less";
+
+@import "fileinput.less";
+@import "filelist.less";
+@import "progress.less";
+
+@import "footer.less";
+
+.p10 { padding: 10px; }
+.page-header { margin: 20px 0px 20px !important; }
+.lnk { cursor: pointer; }
+
+h1 { font-size: @font-size-h1; }
+h2 { font-size: @font-size-h2; }
+h3 { font-size: @font-size-h3; }
+h4 { font-size: @font-size-h4; }
+h5 { font-size: @font-size-h5; }
+h6 { font-size: @font-size-h6; }
+
+body {
+  font-family: @font-family-base !important;
+}
+
+.body-header {
+  background-color: @content-background1;
+  padding: @content-padding;
+  
+  .home-title {
+    color: #fff;
+    font-size: 72px;
+    
+    .satisfy {
+      font-family: 'Yellowtail', cursive;
+    }
+  }
+  
+  .home-subtitle {
+    color: #fff;
+    font-size: 30px;
+  }  
+}
+
+.body-content {
+  width: 100%;
+  padding: 20px 0px 100px 0px;
+  background-color: @content-background2;
+  min-height: @content-minheight;
+}
+
+.about-content {
+  min-height: @content-minheight;
+  background-color: @content-background3;
+  padding: @content-padding;
+}
+
+.opensource-content {
+  min-height: @content-minheight;
+  background-color: @content-background4;
+  padding: @content-padding;
+}
+
+.contact-content {
+  min-height: @content-minheight;
+  background-color: @content-background5;
+  padding: @content-padding;
+}
+
+.header-links {
+  padding-top: 15px;
+  text-align: right;
+  font-size: 15px;
+}
+
+.header-links a {
+  display: inline-block;
+  margin: 0 5px;
+  color: #fff;
+}

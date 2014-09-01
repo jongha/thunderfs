@@ -1,0 +1,22 @@
+{
+    "name": "thunderfs",
+    "title": "Thunderfs library",
+    "description": "",
+    "version": "0.0.1",
+    "author": {
+        "name": "Jong-Ha Ahn",
+        "email": "jongha.ahn@mrlatte.net",
+        "url": "http://www.mrlatte.net"
+    },
+    "dependencies": {
+        "jquery": ">=1.7.0"
+    },
+    "licenses": [{
+        "type": "GNU-AGPL-3.0",
+        "url": "https://github.com/libsac/thunderfs/blob/master/LICENSE"}
+    ],
+    "keywords": ["file", "upload"],
+    "bugs": "https://github.com/libsac/thunderfs/issues",
+    "homepage": "https://github.com/libsac/thunderfs",
+    "docs": "https://github.com/libsac/thunderfs"
+}
