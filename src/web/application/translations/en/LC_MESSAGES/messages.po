@@ -48,7 +48,7 @@ msgid "페이스북으로 보내기"
 msgstr "Send Facebook"
 
 msgid "트위터로 보내기"
-msgstr "Send Twittere"
+msgstr "Send Twitter"
 
 msgid "여기로 파일을 드래그 해주세요."
 msgstr "Drag files here."
