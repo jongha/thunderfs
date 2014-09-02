@@ -21,7 +21,7 @@ define(["jquery"], function ($) {
                 event.stopPropagation();
                 event.preventDefault();
             })
-            .bind("drop", function(e) {
+            .bind("drop", function(event) {
                 $(this).removeClass("active");
 
                 event.stopPropagation();
@@ -34,7 +34,7 @@ define(["jquery"], function ($) {
                     upload.uploadFiles(event.dataTransfer.files[i]);
                 }
             });
-    };
+    }
 
     return {
         init: init

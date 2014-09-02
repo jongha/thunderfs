@@ -10,18 +10,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link rel="icon" href="/favicon.ico">
+		<link rel="icon" href="../../favicon.ico">
 		<title>{{ context['service.name'] }} - {{ context['service.slogan'] }}</title>
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
-
-		{%- if context['debug'] -%}
-			<link rel="stylesheet/less" type="text/css" href="/static/src/less/thunderfs.less">
-			<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
-		{% else %}
-			<link rel="stylesheet" type="text/css" href="/static/css/thunderfs.min.css">
-		{% endif %}
-
+		<link rel="stylesheet" type="text/css" href="/static/css/thunderfs.min.css">
 		<!--[if lt IE 9]>
 			<link href="//netdna.bootstrapcdn.com/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
 			<link href="/static/ie/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
@@ -32,26 +25,14 @@
 	</head>
 
 	<body>
-		<div class="body-header clearfix" id="header">
-			{% include 'modules/body-header.html' %}
+		<div class="error-header clearfix" id="header">
+			{% include 'modules/error-header.html' %}
 		</div>
 
-		<div class="body-content clearfix" id="upload">
-			{% include 'modules/body-content.html' %}
+		<div class="error-content clearfix">
+			{% include 'modules/error-content.html' %}
 		</div>
-
-		<div class="about-content text-center clearfix" id="about">
-			{% include 'modules/about.html' %}
-		</div>
-
-		<div class="usecase-content text-center clearfix" id="usecase">
-			{% include 'modules/usecase.html' %}
-		</div>
-
-		<div class="contact-content text-center clearfix" id="contact">
-			{% include 'modules/contact.html' %}
-		</div>
-
+		
 		<div class="footer clearfix">
 			{% include 'modules/footer.html' %}
 		</div>
@@ -59,15 +40,8 @@
 		{% include 'modules/config.html' %}
 		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-		
-		{%- if context['debug'] -%}
-			<script src="/static/src/js/thunderfs.js"></script>
-		{% else %}
-			<script src="/static/js/thunderfs.min.js"></script>
-		{% endif %}
-		
+		<script src="/static/js/thunderfs.min.js"></script>
 		{% include 'modules/uservoice.html' %}
-		{% include 'modules/addthis.html' %}
 		{% include 'modules/analytics.html' %}
 	</body>
 </html>

@@ -1,7 +1,7 @@
 /* js/tunderfs.upload.js */
 define(["jquery"], function ($) {
     var _list = null,
-        _options = null
+        _options = null,
         _callback = null;
 
     var uploadFiles = function (file) {
@@ -42,21 +42,21 @@ define(["jquery"], function ($) {
             beforeSend: function() {
                 _list.progress(filelist, 0, 0);
             },
-            success: function(data, textStatus, jqXHR) {
+            success: function(data) { // function(data, textStatus, jqXHR) {
                 if(typeof data.error === "undefined") {
                     if(_callback) { // callback function
                         _callback(filelist, data);
                     }
 
-                    console.log("SUCCESS: " + data.success);
+                    //console.log("SUCCESS: " + data.success);
                 }else {
                     // Handle errors here
-                    console.log("ERRORS: " + data.error);
+                    //console.log("ERRORS: " + data.error);
                 }
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function() { //function(jqXHR, textStatus, errorThrown) {
                 // Handle errors here
-                console.log("ERRORS: " + textStatus);
+                //console.log("ERRORS: " + textStatus);
             },
             complete: function() {
                 // STOP LOADING SPINNER
@@ -78,7 +78,7 @@ define(["jquery"], function ($) {
         }
 
         $(this).val("");
-    }
+    };
 
     function init(selector, list, options, callback) {
         _options = $.extend({}, options);
@@ -87,7 +87,7 @@ define(["jquery"], function ($) {
         _callback = callback;
 
         $(selector).bind("change", _uploadFilesHandler);
-    };
+    }
 
     return {
         init: init,

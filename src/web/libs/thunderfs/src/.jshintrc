@@ -10,5 +10,14 @@
   "unused": true,
   "boss": true,
   "eqnull": true,
-  "node": true
+  "node": true,
+  "predef": [ 
+    "define",
+    "navigator",
+    "FormData",
+    "window",
+    "confirm",
+    "location",
+    "settings"
+  ]
 }

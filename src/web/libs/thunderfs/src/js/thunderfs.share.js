@@ -17,6 +17,27 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
                 if(_html) { _html.show(); }
                 break;
 
+            case "facebook":
+                window.open("http://www.facebook.com/sharer.php?s=100&p[title]=" +
+                    _options.resources.SEND_SNS_TITLE +
+                    "&p[summary]=" + filename +
+                    "&p[url]=" + encodeURIComponent(url),
+                    //"&p[images][0]=" + image
+                    "facebook_sharer",
+                    "toolbar=0,status=0,width=520,height=350"
+                    );
+
+                break;
+
+            case "twitter":
+                window.open("http://twitter.com/share?text=" + _options.resources.SEND_SNS_TITLE +
+                    " " + encodeURIComponent(url) +
+                    "&hashtags=10away",
+                    "twitter_sharer",
+                    "toolbar=0,status=0,width=520,height=350"
+                    );
+                break;
+
             case "email":
                 location.href = "mailto:" +
                     "?subject=" + _options.resources.SEND_MAIL_SUBJECT.format(filename, url) +
@@ -28,18 +49,18 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
                 // https://developers.kakao.com/docs/js-reference
                 if(!!!_init.kakao) {
                     _init.kakao = true;
-                    Kakao.init(_options.kakaoAPI);
+                    kakao.init(_options.kakaoAPI);
                 }
-                Kakao.Link.sendTalkLink({
+                kakao.Link.sendTalkLink({
                     label: url
                 });
                 break;
         }
-    };
+    }
 
     function init(options) {
         _options = $.extend({}, options);
-    };
+    }
 
     function get(filename, url) {
         _html = $("<textarea />")
@@ -56,18 +77,18 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
                 .append(" " + _options.resources.COPY_LINK)
                 .data({ "type": "copy", "url": url, "filename": filename })
                 .bind("click", clickHandler);
-        };
-
+        }
+            
         var pane = $("<div></div>")
             .append($("<div></div>").addClass("clearfix"))
             .append(
                 $("<div></div>")
-                  .addClass("text-center filelink-url")
-                  .append(
-                    $("<a></a>")
+                    .addClass("text-center filelink-url")
+                    .append(
+                        $("<a></a>")
                         .addClass("alert alert-danger")
                         .attr({ "target": "_blank", "href": url })
-                        .html(url)
+                        .html(url.replace(/.*?:\/\//g, ""))
                     )
             )
             .append(_html)
@@ -76,9 +97,18 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
                 $("<button></button>")
                     .attr({ "type": "button" })
                     .addClass("btn btn-sm btn-primary")
-                    .append($("<i></i>").addClass("fa fa-code"))
-                    .append(" " + _options.resources.SEND_HTML)
-                    .data({ "type": "html", "url": url, "filename": filename })
+                    .append($("<i></i>").addClass("fa fa-facebook-square"))
+                    .append(" " + _options.resources.SEND_FACEBOOK)
+                    .data({ "type": "facebook", "url": url, "filename": filename })
+                    .bind("click", clickHandler)
+            )
+            .append(
+                $("<button></button>")
+                    .attr({ "type": "button" })
+                    .addClass("btn btn-sm btn-primary")
+                    .append($("<i></i>").addClass("fa fa-twitter-square"))
+                    .append(" " + _options.resources.SEND_TWITTER)
+                    .data({ "type": "twitter", "url": url, "filename": filename })
                     .bind("click", clickHandler)
             )
             .append(
@@ -89,13 +119,22 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
                     .append(" " + _options.resources.SEND_MAIL)
                     .data({ "type": "email", "url": url, "filename": filename })
                     .bind("click", clickHandler)
+            )
+            .append(
+                $("<button></button>")
+                    .attr({ "type": "button" })
+                    .addClass("btn btn-sm btn-info")
+                    .append($("<i></i>").addClass("fa fa-code"))
+                    .append(" " + _options.resources.SEND_HTML)
+                    .data({ "type": "html", "url": url, "filename": filename })
+                    .bind("click", clickHandler)
             );
 
         if(capability.mobile()) {
             pane.append(
                 $("<button></button>")
                     .attr({ "type": "button" })
-                    .addClass("btn btn-sm btn-warning")
+                    .addClass("btn btn-sm btn-primary")
                     .append($("<i></i>").addClass("fa fa-share-alt"))
                     .append(" " + _options.resources.SEND_KAKAOTALK)
                     .data({ "type": "kakaotalk", "url": url, "filename": filename })
@@ -108,7 +147,7 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
             clipboard.setText(url);
         }
         return pane;
-    };
+    }
 
     return {
         init: init,

@@ -17,46 +17,116 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: application/views/index.py:11
-msgid "10away"
-msgstr "10away"
-
-#: application/views/index.py:12
-msgid "Fast and easy file sharing"
+msgid "쉽고 빠른 파일 공유"
 msgstr "쉽고 빠른 파일 공유"
 
-msgid "Add files"
+msgid "파일 추가"
 msgstr "파일 추가"
 
-msgid "Copy link"
+msgid "링크 복사"
 msgstr "링크 복사"
 
-msgid "Show HTML"
+msgid "HTML 보기"
 msgstr "HTML 보기"
 
-msgid "Send mail"
+msgid "메일 보내기"
 msgstr "메일 보내기"
 
-msgid "File shared with you"
+msgid "파일을 공유합니다."
 msgstr "파일을 공유합니다."
 
-msgid "Mail body"
-msgstr "파일명:{0}%%0D%%0A링크:{1}"
-
-msgid "Send KakaoTalk"
-msgstr "카카오톡으로 보내기"
-
-msgid "Drag files here"
-msgstr "여기로 파일을 드래그 해주세요"
-
-msgid "Time to live"
-msgstr "남은시간"
-
-msgid "File name"
+msgid "파일명"
 msgstr "파일명"
 
-msgid "File size"
+msgid "링크"
+msgstr "링크"
+
+msgid "카카오톡으로 보내기"
+msgstr "카카오톡으로 보내기"
+
+msgid "페이스북으로 보내기"
+msgstr "페이스북으로 보내기"
+
+msgid "트위터로 보내기"
+msgstr "트위터로 보내기"
+
+msgid "여기로 파일을 드래그 해주세요."
+msgstr "여기로 파일을 드래그 해주세요."
+
+msgid "남은시간"
+msgstr "남은시간"
+
+msgid "파일크기"
 msgstr "파일크기"
 
-msgid "Are you sure you want to delete file"
+msgid "정말로 파일을 삭제 하시겠습니까?"
 msgstr "정말로 파일을 삭제 하시겠습니까?"
+
+msgid "파일을 찾을 수 없습니다."
+msgstr "파일을 찾을 수 없습니다."
+
+msgid "10 분"
+msgstr "10 분"
+
+msgid "업로드한 파일은 10분간 공유할 수 있습니다."
+msgstr "업로드한 파일은 10분간 공유할 수 있습니다."
+
+msgid "나도 모르게 파일이 공유되는 것을 걱정하지 않아도 됩니다."
+msgstr "나도 모르게 파일이 공유되는 것을 걱정하지 않아도 됩니다."
+
+msgid "업로드"
+msgstr "업로드"
+
+msgid "업로드 중"
+msgstr "업로드 중"
+
+msgid "파일당 최대 4GB까지 무료로 업로드 할 수 있습니다."
+msgstr "파일당 최대 4GB까지 무료로 업로드 할 수 있습니다."
+
+msgid "모바일"
+msgstr "모바일"
+
+msgid "iPhone 또는 Android 등 모바일에서도 사용 가능합니다."
+msgstr "iPhone 또는 Android 등 모바일에서도 사용 가능합니다."
+
+msgid "이동 중에도 파일 공유가 가능합니다."
+msgstr "이동 중에도 파일 공유가 가능합니다."
+
+msgid "활용 방법"
+msgstr "활용 방법"
+
+msgid "친구와 파일을 공유하고 싶을 때"
+msgstr "친구와 파일을 공유하고 싶을 때"
+
+msgid "클라우드 서비스의 파일 공유는 불편하지 않았나요?"
+msgstr "클라우드 서비스의 파일 공유는 불편하지 않았나요?"
+
+msgid "파일을 간편하게 공유할 수 있습니다."
+msgstr "파일을 간편하게 공유할 수 있습니다."
+
+msgid "임시 저장소가 필요할 때"
+msgstr "임시 저장소가 필요할 때"
+
+msgid "짧은 시간 많은 사람에게 전달할 파일이 있나요?"
+msgstr "짧은 시간 많은 사람에게 전달할 파일이 있나요?"
+
+msgid "쉽고 빠르게 링크를 만들 수 있습니다."
+msgstr "쉽고 빠르게 링크를 만들 수 있습니다."
+    
+msgid "연락하기"
+msgstr "연락하기"
+
+msgid "개선 사항 또는 아이디어가 있다면 메일 주세요."
+msgstr "개선 사항 또는 아이디어가 있다면 메일 주세요."
+
+msgid "의견을 반영할 수 있도록 최선을 다하겠습니다."
+msgstr "의견을 반영할 수 있도록 최선을 다하겠습니다."
+
+msgid "파일을 공유했습니다."
+msgstr "파일을 공유했습니다."
+
+msgid "소개"
+msgstr "소개"
+
+msgid "처음으로"
+msgstr "처음으로"

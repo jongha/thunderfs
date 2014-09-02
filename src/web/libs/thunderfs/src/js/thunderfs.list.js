@@ -4,7 +4,8 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
     var _progress = null;
     var _list_ul = null;
     var _options = null;
-
+    var _expire = null;
+    
     function init(selector, progress, options) {
         _options = $.extend({}, options);
 
@@ -27,9 +28,9 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
                     .append(
                         $("<div></div>").append($(".fileinput-button:first").clone())
                     )
-            )
+            );
         }
-    };
+    }
 
     function append(file, xhr) {
 
@@ -75,13 +76,15 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
 
             var progress = _progress.clone().show("slow");
 
-            var item = function(title, body) {
+            var item = function(title, body, extra) {
                 return $("<div></div>")
                     .addClass("list-group-item")
                     .append($("<h5></h5>").append($("<strong></strong>").html(title)))
-                    .append($("<p></p>").append(body));
+                    .append($("<p></p>").append(body).append(extra));
             };
 
+            var extra_expire = $("<div></div>").addClass("text-right small").html(Date(_expire));
+            
             var itemgroup = $("<li></li>")
                 .append(
                     $("<div></div>")
@@ -92,7 +95,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
                         .append(
                             $("<div ></div >")
                                 .addClass("list-group")
-                                .append(item(_options.resources.TTL, ttl))
+                                .append(item(_options.resources.TTL, ttl, extra_expire))
                                 .append(item(_options.resources.FILE, filename))
                                 .append(item(_options.resources.SIZE, filesize))
                         )
@@ -108,7 +111,8 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
             var complete = function(data) {
                 var file = data.files[0];
                 var url = file.link;
-
+                _expire = file.expire;
+                
                 filelink
                     .show()
                     .append(share.get(file.filename, url));
@@ -126,15 +130,18 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
         }
 
         return null;
-    };
+    }
 
     function bytesToSize(bytes) {
-       if(bytes == 0) return '0 Byte';
-       var k = 1000;
-       var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-       var i = Math.floor(Math.log(bytes) / Math.log(k));
-       return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
-    };
+        if(bytes === 0) {
+            return '0 Byte';
+        }
+        
+        var k = 1000;
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+    }
 
     function setFilledStyle() {
         if(_list && _list.find("li").length > 0) {
@@ -142,7 +149,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
         }else {
             _list.removeClass("filled");
         }
-    };
+    }
 
     function progress(filelist, loaded, total) {
         if(_list && filelist) {
@@ -153,7 +160,8 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
             if(percentage >= 100 && filelist.timer === null) {
                 filelist.progress
                     .data({ "ttl": _options.ttl })
-                    .addClass("ttl");
+                    .addClass("ttl")
+                    .hide();
 
                 filelist.timer = setInterval(function() {
                     var ttl = parseInt(filelist.progress.data("ttl"));
@@ -175,9 +183,9 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
                 }, 1000);
             }
 
-            filelist.filesize.html(bytesToSize(loaded));
+            filelist.filesize.html(bytesToSize(loaded) + " / " + bytesToSize(total));
         }
-    };
+    }
 
     return {
         init: init,

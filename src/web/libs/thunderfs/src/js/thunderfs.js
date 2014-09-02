@@ -8,15 +8,13 @@ require(["jquery"], function ($) { // jquery load first
             String.prototype.format = function() {
                 var args = arguments;
                 return this.replace(/{(\d+)}/g, function(match, number) {
-                    return typeof args[number] != "undefined" ? args[number] : match;
+                    return typeof args[number] !== "undefined" ? args[number] : match;
                 });
             };
         }
 
         var servers = [
-            "file1.10away.net",
-            "file2.10away.net",
-            "file3.10away.net"
+            "file1.10away.net"
         ];
 
         var default_settings = {
@@ -33,7 +31,10 @@ require(["jquery"], function ($) { // jquery load first
                 SEND_MAIL_SUBJECT: "[10away] 파일을 공유합니다.",
                 SEND_MAIL_BODY: "파일명:{0}%0D%0A링크:{1}",
                 SEND_KAKAOTALK: "카카오 톡으로 보내기",
-
+                SEND_FACEBOOK: "페이스북으로 보내기",
+                SEND_TWITTER: "트위터로 보내기",
+                SEND_SNS_TITLE: "파일을 공유했습니다.",
+                
                 DRAG: "여기로 파일을 드래그 해주세요.",
                 TTL: "남은시간",
                 TTL_DESC: "초 후에 자동으로 링크가 삭제됩니다.",

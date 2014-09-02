@@ -1,19 +1,18 @@
 <div class="text-center">
 	<div class="header-links">
-		<a href="#">Home</a>
-		<a href="#upload">Upload</a>
-		<a href="#about">About</a>
-		<a href="#source">Source</a>
-		<a href="#contact">Contact</a>
+		<a href="#">{{ context['menu.home'] }}</a>
+		<a href="#upload">{{ context['menu.upload'] }}</a>
+		<a href="#about">{{ context['menu.about'] }}</a>
+		<a href="#usecase">{{ context['menu.usecase'] }}</a>
+		<a href="#contact">{{ context['menu.contact'] }}</a>
 	</div>
 
 	<h1 class="home-title"><span class="strong lato">10</span><span class="satisfy">away</span></h1>
 
-	<div class="home-subtitle text-center"><i class="fa fa-cloud-upload"></i> {{ context['service.slogan'] }}
+	<div class="home-subtitle text-center">{{ context['service.slogan'] }}
 		<span class="btn btn-success fileinput-button">
-				<i class="fa fa-cloud-upload"></i>
-				<span>{{ context['file.add'] }}...</span>
-				<input class="fileupload" type="file" name="files[]" multiple="multiple" />
+			<i class="fa fa-save"></i> <span>{{ context['file.add'] }}...</span>
+			<input class="fileupload" type="file" name="files[]" multiple="multiple" />
 		</span>
 	</div>
 

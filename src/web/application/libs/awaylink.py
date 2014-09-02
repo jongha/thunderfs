@@ -6,6 +6,7 @@ import codecs
 import json
 import uuid
 import datetime
+from application.libs import shorten
 
 def init_names(db, collection_name):
   names = [ 
@@ -53,21 +54,24 @@ def get(db, collection_link, collection_name, domain, link):
       
     link_count = db.thunderfs[collection_link].count()
     
+    long_link = False
     if link_count < name_count:
       name = get_name(db, collection_link, collection_name)
     else:
+      long_link = True
       name = uuid.uuid4().hex
 
-    print(name)
-    
     data = {
       'name': name,
-      'link': link,
-      'date': datetime.datetime.utcnow()
+      'link': link
     }
     
     id = db.thunderfs[collection_link].insert(data)
     if id is not None:
-      return 'http://%s/%s' % (domain, name)
+      link = 'http://%s/%s' % (domain, name)
+      if long_link:
+        link = shorten.get(link) 
+      
+      return link
     
   return None  

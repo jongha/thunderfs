@@ -6,11 +6,11 @@ define([], function () {
         }
 
         return false;
-    };
+    }
 
     function drag() {
         return !mobile();
-    };
+    }
 
     return {
         mobile: mobile,

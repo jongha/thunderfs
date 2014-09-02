@@ -1,15 +1,9 @@
-<div class="row">
-	<h1>Contact</h1>
-	<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		<div><img alt="Jong-Ha Ahn" class="img-circle" itemprop="image" src="http://www.gravatar.com/avatar/2f95e6584f66a9090e0d192e0b7cf423?s=100&amp;r=g"></div>
-		<h3>Jong-Ha Ahn</h3>
-		<p>Front and Back end Software engineer</p>
-		<p>jongha.ahn@mrlatte.net</p>
-	</article>
-  
-	<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		<div><img alt="Jong-Ha Ahn" class="img-circle" itemprop="image" src="http://www.gravatar.com/avatar/dd5f5de05840037e410dc89609aeed98?s=100&amp;r=g"></div>
-		<h3>Kyung-min Roh</h3>
-		<p>Back-end Software engineer</p>
+<div>
+	<h1>{{ context['contact.title'] }}</h1>
+	
+	<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<h1 class="img-mark"><i class="fa fa-envelope-o"></i></h1>
+		<p>developer@10away.net</p>
+		<p>{{ context['contact.section1.content1'] }}<br />{{ context['contact.section1.content2'] }}</p>
 	</article>
 </div>
