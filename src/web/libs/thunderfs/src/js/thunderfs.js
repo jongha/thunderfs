@@ -31,6 +31,7 @@ require(["jquery"], function ($) { // jquery load first
                 SEND_MAIL_SUBJECT: "[10away] 파일을 공유합니다.",
                 SEND_MAIL_BODY: "파일명:{0}%0D%0A링크:{1}",
                 SEND_KAKAOTALK: "카카오 톡으로 보내기",
+                SEND_LINE: "라인으로 보내기",
                 SEND_FACEBOOK: "페이스북으로 보내기",
                 SEND_TWITTER: "트위터로 보내기",
                 SEND_SNS_TITLE: "파일을 공유했습니다.",

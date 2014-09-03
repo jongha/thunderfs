@@ -1,5 +1,5 @@
 /* js/tunderfs.share.js */
-define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($, kakao, capability, ZeroClipboard) {
+define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($, Kakao, capability, ZeroClipboard) {
     var _options = null;
     var _html = null;
 
@@ -49,11 +49,20 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
                 // https://developers.kakao.com/docs/js-reference
                 if(!!!_init.kakao) {
                     _init.kakao = true;
-                    kakao.init(_options.kakaoAPI);
+                    console.log(Kakao, capability, ZeroClipboard);
+                    
+                    Kakao.init(_options.kakaoAPI);
                 }
-                kakao.Link.sendTalkLink({
+                Kakao.Link.sendTalkLink({
                     label: url
                 });
+                break;
+                
+            case "line":
+                window.open("http://line.naver.jp/R/msg/text/" +
+                    _options.resources.SEND_MAIL_SUBJECT.format(filename, url) + 
+                    "%0D%0A" + _options.resources.SEND_MAIL_BODY.format(filename, url), 
+                    "_blank");
                 break;
         }
     }
@@ -78,7 +87,7 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
                 .data({ "type": "copy", "url": url, "filename": filename })
                 .bind("click", clickHandler);
         }
-            
+
         var pane = $("<div></div>")
             .append($("<div></div>").addClass("clearfix"))
             .append(
@@ -138,6 +147,15 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
                     .append($("<i></i>").addClass("fa fa-share-alt"))
                     .append(" " + _options.resources.SEND_KAKAOTALK)
                     .data({ "type": "kakaotalk", "url": url, "filename": filename })
+                    .bind("click", clickHandler)
+            )
+            .append(
+                $("<button></button>")
+                    .attr({ "type": "button" })
+                    .addClass("btn btn-sm btn-primary")
+                    .append($("<i></i>").addClass("fa fa-share-alt"))
+                    .append(" " + _options.resources.SEND_LINE)
+                    .data({ "type": "line", "url": url, "filename": filename })
                     .bind("click", clickHandler)
             );
         }

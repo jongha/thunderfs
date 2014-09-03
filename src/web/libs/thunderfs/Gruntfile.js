@@ -14,14 +14,14 @@ module.exports = function (grunt) {
       " Licensed <%= _.pluck(pkg.licenses, 'type').join(', ') %> */\n",
     // Task configuration.
     clean: {
-      files: ["dist"]
+      files: ["dist", "bundle"]
     },
     uglify: {
       options: {
         banner: "<%= banner %>"
       },
       dist: {
-        src: "src/js/<%= name %>.js",
+        src: "bundle/js/<%= name %>.bundle.js",
         dest: "dist/js/<%= name %>.min.js"
       }
     },
@@ -83,15 +83,25 @@ module.exports = function (grunt) {
         tasks: ["jshint:test", "qunit"]
       },
     },
+    requirejs: {
+      production: {
+        options: {
+          name: "<%= name %>",
+          baseUrl: "src/js",
+          mainConfigFile: "src/config.js",
+          out: "bundle/js/thunderfs.bundle.js"
+        }
+      }
+    },
     less: {
-      development: {
+      /*development: {
         options: {
           paths: ["dist/css"]
         },
         files: {
           "dist/css/<%= name %>.css": "src/less/<%= name %>.less"
         }
-      },
+      },*/
       production: {
         options: {
           paths: ["dist/css"],
@@ -117,11 +127,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-qunit-istanbul");
   grunt.loadNpmTasks("grunt-shell");
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks("grunt-contrib-less");
+  grunt.loadNpmTasks("grunt-contrib-requirejs");
   
   // Default task.
-  grunt.registerTask("default", ["jshint", "qunit", "clean", "uglify", "less", "cssmin"]);
+  grunt.registerTask("default", ["jshint", "qunit", "clean", "less", "cssmin", "requirejs", "uglify"]);
 
   // Travis task.
   grunt.registerTask("travis", ["jshint", "qunit", "shell:coverall"]);

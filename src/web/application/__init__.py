@@ -34,7 +34,7 @@ app.config.update(dict(
     #BABEL_DEFAULT_LOCALE='ko',
 ))
 
-app.debug = False
+app.debug = app.config['DEBUG']
 
 babel = Babel(app)
 
@@ -83,6 +83,7 @@ def get_context():
     'file.send.mail.subject': '[' + app.config['SERVICE_NAME'] + '] ' + gettext(u'파일을 공유합니다.'),
     'file.send.mail.body': gettext(u'파일명') + ':' '{0}%0D%0A' + gettext(u'링크') + "{1}",
     'file.send.kakaotalk': gettext(u'카카오톡으로 보내기'),
+    'file.send.line': gettext(u'라인으로 보내기'),
     'file.send.facebook': gettext(u'페이스북으로 보내기'),
     'file.send.twitter': gettext(u'트위터로 보내기'),
     'file.send.title': gettext(u'파일을 공유했습니다.'),

@@ -44,6 +44,9 @@ msgstr "링크"
 msgid "카카오톡으로 보내기"
 msgstr "카카오톡으로 보내기"
 
+msgid "라인으로 보내기"
+msgstr "라인으로 보내기"
+
 msgid "페이스북으로 보내기"
 msgstr "페이스북으로 보내기"
 

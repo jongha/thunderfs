@@ -153,9 +153,10 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
 
     function progress(filelist, loaded, total) {
         if(_list && filelist) {
+            var progressbar = filelist.progress.find(".progress");
             var percentage = ((loaded / total) * 100).toFixed(0);
-
-            filelist.progress.attr("data-progress", ((loaded / total) * 100).toFixed(0));
+            
+            progressbar.attr({ "data-progress": ((loaded / total) * 100).toFixed(0) });
 
             if(percentage >= 100 && filelist.timer === null) {
                 filelist.progress
@@ -169,7 +170,7 @@ define(["jquery", "jquery.ellipsis", "thunderfs.share", "thunderfs.capability"],
                     filelist.progress.data({ "ttl": --ttl });
                     var percentage = parseInt((--ttl / _options.ttl) * 100);
 
-                    filelist.progress.attr({ "data-progress": percentage });
+                    progressbar.attr({ "data-progress": percentage });
                     
                     filelist.ttl
                         .empty()

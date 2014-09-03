@@ -63,7 +63,8 @@ def get(db, collection_link, collection_name, domain, link):
 
     data = {
       'name': name,
-      'link': link
+      'link': link,
+      'date': datetime.datetime.utcnow(),
     }
     
     id = db.thunderfs[collection_link].insert(data)

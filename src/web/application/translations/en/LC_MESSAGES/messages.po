@@ -24,13 +24,13 @@ msgid "파일 추가"
 msgstr "Add files"
 
 msgid "링크 복사"
-msgstr "Copy link"
+msgstr "Clipboard"
 
 msgid "HTML 보기"
-msgstr "Show HTML"
+msgstr "HTML"
 
 msgid "메일 보내기"
-msgstr "Send mail"
+msgstr "Mail"
 
 msgid "파일을 공유합니다."
 msgstr "File shared with you"
@@ -42,13 +42,16 @@ msgid "링크"
 msgstr "Link"
 
 msgid "카카오톡으로 보내기"
-msgstr "Send KakaoTalk"
+msgstr "KakaoTalk"
+
+msgid "라인으로 보내기"
+msgstr "LINE"
 
 msgid "페이스북으로 보내기"
-msgstr "Send Facebook"
+msgstr "Facebook"
 
 msgid "트위터로 보내기"
-msgstr "Send Twitter"
+msgstr "Twitter"
 
 msgid "여기로 파일을 드래그 해주세요."
 msgstr "Drag files here."
