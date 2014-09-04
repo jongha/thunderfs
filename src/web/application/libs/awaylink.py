@@ -27,6 +27,18 @@ def init_names(db, collection_name):
     'adams',
     'ford',
     'wilson',
+    'jobs',
+    'gates',
+    'zuckerberg',
+    'slim',
+    'buffett',
+    'allen',
+    'ballmer',
+    'page',
+    'brin',
+    'bezos',
+    'cook',
+    'branson',
   ]
   
   for name in names:
@@ -39,7 +51,7 @@ def get_name(db, collection_link, collection_name):
   for data in db.thunderfs[collection_link].find():
     names.append(data['name'])
   
-  selected_data = db.thunderfs[collection_name].find_one({ 'name': { '$nin': names } })
+  selected_data = db.thunderfs[collection_name].find_one({ 'name': { '$nin': names.lower() } })
   
   if selected_data is not None:
     return selected_data['name']
