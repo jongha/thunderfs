@@ -9,8 +9,8 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, Response
 
 from application import app
-from werkzeug.utils import secure_filename
-
+#from werkzeug.utils import secure_filename
+    
 from pymongo import MongoClient
 import gridfs
 
@@ -34,7 +34,8 @@ def put():
       if file and allowed_file(file.filename):
 
         org_filename = file.filename
-        filename = secure_filename(org_filename)
+        #filename = secure_filename(org_filename)
+        filename = org_filename
 
         mongo_filename = '%s/%d/%s' % (
           strftime('%Y/%m/%d/%H/%M/%S', gmtime()),
