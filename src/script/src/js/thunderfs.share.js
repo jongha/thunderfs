@@ -49,7 +49,6 @@ define(["jquery", "kakao", "thunderfs.capability", "zeroclipboard"], function ($
                 // https://developers.kakao.com/docs/js-reference
                 if(!!!_init.kakao) {
                     _init.kakao = true;
-                    console.log(Kakao, capability, ZeroClipboard);
                     
                     Kakao.init(_options.kakaoAPI);
                 }

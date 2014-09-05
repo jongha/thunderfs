@@ -49,9 +49,9 @@ def init_names(db, collection_name):
 def get_name(db, collection_link, collection_name):
   names = []
   for data in db.thunderfs[collection_link].find():
-    names.append(data['name'])
+    names.append(data['name'].lower())
   
-  selected_data = db.thunderfs[collection_name].find_one({ 'name': { '$nin': names.lower() } })
+  selected_data = db.thunderfs[collection_name].find_one({ 'name': { '$nin': names } })
   
   if selected_data is not None:
     return selected_data['name']

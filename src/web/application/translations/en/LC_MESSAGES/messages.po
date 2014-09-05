@@ -75,7 +75,7 @@ msgid "업로드한 파일은 10분간 공유할 수 있습니다."
 msgstr "You can share files that you uploaded within 10 minutes."
 
 msgid "나도 모르게 파일이 공유되는 것을 걱정하지 않아도 됩니다."
-msgstr "You do not need to worry that the shared important file."
+msgstr "You don't need to worry that the shared important file long time."
 
 msgid "업로드"
 msgstr "Upload"
