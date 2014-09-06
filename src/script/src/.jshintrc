@@ -18,6 +18,7 @@
     "window",
     "confirm",
     "location",
-    "settings"
+    "settings",
+    "prompt"
   ]
 }

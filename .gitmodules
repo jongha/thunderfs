@@ -16,3 +16,6 @@
 [submodule "libs/zeroclipboard"]
 	path = libs/zeroclipboard
 	url = https://github.com/zeroclipboard/zeroclipboard.git
+[submodule "libs/kakao-link"]
+	path = libs/kakao-link
+	url = https://github.com/kakao/kakaolink-web.git

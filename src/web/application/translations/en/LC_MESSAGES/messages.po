@@ -32,11 +32,11 @@ msgstr "HTML"
 msgid "메일 보내기"
 msgstr "Mail"
 
-msgid "파일을 공유합니다."
-msgstr "File shared with you"
+msgid "{0} 파일이 도착했습니다."
+msgstr "Just arrived {0} file to you."
 
 msgid "파일명"
-msgstr "File Name"
+msgstr "File name"
 
 msgid "링크"
 msgstr "Link"
@@ -133,3 +133,6 @@ msgstr "About"
 
 msgid "처음으로"
 msgstr "Home"
+
+msgid "메시지를 입력해 주세요."
+msgstr "Please enter your message."
