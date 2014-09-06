@@ -52,7 +52,7 @@ app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
 
 def localeselector():
-  return request.accept_languages.best_match(['en', 'ko'])
+  return request.accept_languages.best_match(['en', 'ko', 'ja', 'zh'])
   
 babel.localeselector(localeselector)
 
