@@ -58,7 +58,7 @@ babel.localeselector(localeselector)
 
 def get_context():
   return {
-    'debug': True,
+    'debug': False,
     'service.name': app.config['SERVICE_NAME'],
     'service.slogan': gettext(u'쉽고 빠른 파일 공유'),
     
