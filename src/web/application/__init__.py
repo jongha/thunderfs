@@ -34,7 +34,7 @@ app.config.update(dict(
     #BABEL_DEFAULT_LOCALE='ko',
 ))
 
-app.debug = False
+app.debug = app.config['DEBUG']
 
 babel = Babel(app)
 
@@ -52,14 +52,13 @@ app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
 
 def localeselector():
-  print('localeselector')
   return request.accept_languages.best_match(['en', 'ko'])
   
 babel.localeselector(localeselector)
 
 def get_context():
   return {
-    'debug': False,
+    'debug': True,
     'service.name': app.config['SERVICE_NAME'],
     'service.slogan': gettext(u'쉽고 빠른 파일 공유'),
     
@@ -80,9 +79,12 @@ def get_context():
     'file.link.copy': gettext(u'링크 복사'),
     'file.show.html': gettext(u'HTML 보기'),
     'file.send.mail': gettext(u'메일 보내기'),
-    'file.send.mail.subject': '[' + app.config['SERVICE_NAME'] + '] ' + gettext(u'파일을 공유합니다.'),
+    'file.send.mail.subject': gettext(u'{0} 파일이 도착했습니다.'),
     'file.send.mail.body': gettext(u'파일명') + ':' '{0}%0D%0A' + gettext(u'링크') + "{1}",
+    'file.send.sns.message': gettext(u'메시지를 입력해 주세요.'),
+    'file.send.sns.subject': gettext(u'{0} 파일이 도착했습니다.'),
     'file.send.kakaotalk': gettext(u'카카오톡으로 보내기'),
+    'file.send.line': gettext(u'라인으로 보내기'),
     'file.send.facebook': gettext(u'페이스북으로 보내기'),
     'file.send.twitter': gettext(u'트위터로 보내기'),
     'file.send.title': gettext(u'파일을 공유했습니다.'),

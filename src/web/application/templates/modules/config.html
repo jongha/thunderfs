@@ -1,36 +1,41 @@
 <script>
-	var require = {
-			baseUrl: "/static/src/js",
-			paths: {
-					"jquery": "//code.jquery.com/jquery-1.11.1.min",
-					"bootstrap": "//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min",
-					"jquery.ellipsis": "/static/js/jquery.ellipsis.min",
-					"zeroclipboard": "/static/js/ZeroClipboard.min",
-					"kakao": "https://developers.kakao.com/sdk/js/kakao.min"
-			},
-			shim: {
-			},
-			urlArgs: "bust=" + (new Date()).getTime()
-	};
+	{%- if context["debug"] -%}
+		var require = {
+				baseUrl: '/static/src/js',
+				paths: {
+						'jquery': '//code.jquery.com/jquery-1.11.1.min',
+						'bootstrap': '//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min',
+						'jquery.ellipsis': '/static/js/jquery.ellipsis.min',
+						'zeroclipboard': '/static/js/ZeroClipboard.min',
+						'kakao': '/static/js/kakao.link'
+				},
+				shim: {
+				},
+				urlArgs: 'bust=' + (new Date()).getTime()
+		};	
+	{% endif %}
 
 	var settings = {
 		resources: {
-			COPY_LINK: "{{ context['file.link.copy'] }}",
-			SEND_HTML: "{{ context['file.show.html'] }}",
-			SEND_MAIL: "{{ context['file.send.mail'] }}",
-			SEND_MAIL_SUBJECT: "{{ context['file.send.mail.subject'] }}",
-			SEND_MAIL_BODY: "{{ context['file.send.mail.body'] }}",
-			SEND_KAKAOTALK: "{{ context['file.send.kakaotalk'] }}",
-			SEND_FACEBOOK: "{{ context['file.send.facebook'] }}",
-			SEND_TWITTER: "{{ context['file.send.twitter'] }}",
-			SEND_SNS_TITLE: "{{ context['file.send.title'] }}",
+			COPY_LINK: '{{ context["file.link.copy"] }}',
+			SEND_HTML: '{{ context["file.show.html"] }}',
+			SEND_MAIL: '{{ context["file.send.mail"] }}',
+			SEND_MAIL_SUBJECT: '{{ context["file.send.mail.subject"] }}',
+			SEND_MAIL_BODY: '{{ context["file.send.mail.body"] }}',
+			SEND_SNS_SUBJECT: '{{ context["file.send.sns.subject"] }}',			
+			SEND_KAKAOTALK: '{{ context["file.send.kakaotalk"] }}',
+			SEND_LINE: '{{ context["file.send.line"] }}',
+			SEND_FACEBOOK: '{{ context["file.send.facebook"] }}',
+			SEND_TWITTER: '{{ context["file.send.twitter"] }}',
+			SEND_SNS_MESSAGE: '{{ context["file.send.sns.message"] }}',
+			SEND_SNS_TITLE: '{{ context["file.send.sns.subject"] }}',
 			
-			DRAG: "{{ context['file.draghere'] }}",
-			TTL: "{{ context['file.ttl'] }}",
-			TTL_DESC: "{{ context['file.ttl.desc'] }}",
-			FILE: "{{ context['file.name'] }}",
-			SIZE: "{{ context['file.size'] }}",
-			REALLY_DELETE: "{{ context['file.delete.confirm'] }}"
+			DRAG: '{{ context["file.draghere"] }}',
+			TTL: '{{ context["file.ttl"] }}',
+			TTL_DESC: '{{ context["file.ttl.desc"] }}',
+			FILE: '{{ context["file.name"] }}',
+			SIZE: '{{ context["file.size"] }}',
+			REALLY_DELETE: '{{ context["file.delete.confirm"] }}'
 		}
 	};
 </script>

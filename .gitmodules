@@ -7,3 +7,15 @@
 [submodule "src/web/libs/zeroclipboard"]
 	path = src/web/libs/zeroclipboard
 	url = https://github.com/zeroclipboard/zeroclipboard.git
+[submodule "libs/jquery-ellipsis"]
+	path = libs/jquery-ellipsis
+	url = https://github.com/STAR-ZERO/jquery-ellipsis.git
+[submodule "libs/jQuery-Knob"]
+	path = libs/jQuery-Knob
+	url = https://github.com/aterrien/jQuery-Knob.git
+[submodule "libs/zeroclipboard"]
+	path = libs/zeroclipboard
+	url = https://github.com/zeroclipboard/zeroclipboard.git
+[submodule "libs/kakao-link"]
+	path = libs/kakao-link
+	url = https://github.com/kakao/kakaolink-web.git

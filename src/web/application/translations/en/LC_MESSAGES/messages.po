@@ -24,31 +24,34 @@ msgid "파일 추가"
 msgstr "Add files"
 
 msgid "링크 복사"
-msgstr "Copy link"
+msgstr "Clipboard"
 
 msgid "HTML 보기"
-msgstr "Show HTML"
+msgstr "HTML"
 
 msgid "메일 보내기"
-msgstr "Send mail"
+msgstr "Mail"
 
-msgid "파일을 공유합니다."
-msgstr "File shared with you"
+msgid "{0} 파일이 도착했습니다."
+msgstr "Just arrived {0} file to you."
 
 msgid "파일명"
-msgstr "File Name"
+msgstr "File name"
 
 msgid "링크"
 msgstr "Link"
 
 msgid "카카오톡으로 보내기"
-msgstr "Send KakaoTalk"
+msgstr "KakaoTalk"
+
+msgid "라인으로 보내기"
+msgstr "LINE"
 
 msgid "페이스북으로 보내기"
-msgstr "Send Facebook"
+msgstr "Facebook"
 
 msgid "트위터로 보내기"
-msgstr "Send Twitter"
+msgstr "Twitter"
 
 msgid "여기로 파일을 드래그 해주세요."
 msgstr "Drag files here."
@@ -72,7 +75,7 @@ msgid "업로드한 파일은 10분간 공유할 수 있습니다."
 msgstr "You can share files that you uploaded within 10 minutes."
 
 msgid "나도 모르게 파일이 공유되는 것을 걱정하지 않아도 됩니다."
-msgstr "You do not need to worry that the shared important file."
+msgstr "You don't need to worry that the shared important file long time."
 
 msgid "업로드"
 msgstr "Upload"
@@ -130,3 +133,6 @@ msgstr "About"
 
 msgid "처음으로"
 msgstr "Home"
+
+msgid "메시지를 입력해 주세요."
+msgstr "Please enter your message."

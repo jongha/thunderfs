@@ -27,6 +27,18 @@ def init_names(db, collection_name):
     'adams',
     'ford',
     'wilson',
+    'jobs',
+    'gates',
+    'zuckerberg',
+    'slim',
+    'buffett',
+    'allen',
+    'ballmer',
+    'page',
+    'brin',
+    'bezos',
+    'cook',
+    'branson',
   ]
   
   for name in names:
@@ -37,7 +49,7 @@ def init_names(db, collection_name):
 def get_name(db, collection_link, collection_name):
   names = []
   for data in db.thunderfs[collection_link].find():
-    names.append(data['name'])
+    names.append(data['name'].lower())
   
   selected_data = db.thunderfs[collection_name].find_one({ 'name': { '$nin': names } })
   
@@ -63,7 +75,8 @@ def get(db, collection_link, collection_name, domain, link):
 
     data = {
       'name': name,
-      'link': link
+      'link': link,
+      'date': datetime.datetime.utcnow(),
     }
     
     id = db.thunderfs[collection_link].insert(data)
