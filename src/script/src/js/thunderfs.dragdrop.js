@@ -27,9 +27,18 @@ define(['jquery'], function ($) {
         event.stopPropagation();
         event.preventDefault();
 
-        var i = 0;
-        for(i=0; i<event.dataTransfer.files.length; ++i) {
-          upload.uploadFiles(event.dataTransfer.files[i]);
+        var dataTransfer = null;
+        if(event.dataTransfer) {
+          dataTransfer = event.dataTransfer;
+        }else if(event.originalEvent.dataTransfer) {
+          dataTransfer = event.originalEvent.dataTransfer;
+        }
+
+        if(dataTransfer) {
+          var i = 0;
+          for(i=0; i<dataTransfer.files.length; ++i) {
+            upload.uploadFiles(dataTransfer.files[i]);
+          }
         }
       });
   }
