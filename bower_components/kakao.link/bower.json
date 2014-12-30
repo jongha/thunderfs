@@ -1,0 +1,15 @@
+{
+    "name": "kakao.link",
+    "version": "0.1",
+    "main": "kakao.link.js",
+    "ignore": [
+        ".bowerrc",
+        ".gitignore",
+        "index.html",
+        "README.md"
+    ],
+    "dependencies": {
+    },
+    "devDependencies": {
+    }
+}

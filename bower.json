@@ -1,0 +1,25 @@
+{
+  "name": "thunderfs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jongha/thunderfs",
+  "authors": [
+    "Jong-Ha Ahn <jongha.ahn@mrlatte.net>"
+  ],
+  "license": "GNU-AGPL-3.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "jquery": "1.11.2",
+    "zeroclipboard": "~2.2.0",
+    "jquery-ellipsis": "~1.1.1",
+    "jquery-knob": "~1.2.11",
+    "kakao.link": "*"
+  }
+}

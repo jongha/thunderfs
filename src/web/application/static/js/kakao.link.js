@@ -1,1 +1,1 @@
-../../../../../libs/kakao-link/kakao.link.js
+../../../../../bower_components/kakao.link/kakao.link.js

@@ -1,0 +1,23 @@
+{
+  "name": "kakao.link",
+  "main": "kakao.link.js",
+  "ignore": [
+    ".bowerrc",
+    ".gitignore",
+    "index.html",
+    "README.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "homepage": "https://github.com/flitto/kakaolink-web",
+  "_release": "cc19d02389",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "cc19d0238964b7a894786cbcefe46039830bc49f"
+  },
+  "_source": "git://github.com/flitto/kakaolink-web.git",
+  "_target": "*",
+  "_originalSource": "kakao.link",
+  "_direct": true
+}

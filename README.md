@@ -44,7 +44,7 @@ $ make
 
 $ make altinstall
 
-#### Setup tool
+### Setup tools
 
 $ wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
 
@@ -85,6 +85,7 @@ $ yum install mongodb-org
  * /etc/yum.repos.d/nginx.repo
 
 #### nginx.repo
+
 [nginx]
 name=nginx repo
 baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
@@ -93,21 +94,35 @@ enabled=1
 
 $ yum install nginx
 
-#### Mongodb Drivers
+### Mongodb Drivers
 
 $ pip3 install pymongo
 
-#### Flask-Babel
+### Flask-Babel
 
 $ pip3 install Flask-Babel
 
-#### Node.js
+### Node.js
 
 $ yum install fontconfig -y
 
 $ wget http://nodejs.org/dist/v0.10.35/node-v0.10.35.tar.gz
 ...
 $ npm install -g grunt-cli
+
+### Bower
+
+$ npm install -g bower
+
+### Grunt
+
+$ npm install -g grunt grunt-cli
+
+### Install requirements modules
+
+$ cd /data/thunderfs/src/web/
+
+$ pip3 install -r requirements.txt
 
 #### Less
 
@@ -116,6 +131,22 @@ $ npm install -g less
 #### uWSGI
 
 $ pip3 install uwsgi
+
+## Build site
+
+### Build scripts
+
+$ cd /data/thunderfs/src/script/
+
+$ npm install
+
+$ grunt
+
+### Build bower components
+
+$ cd /data/thunderfs/
+
+$ bower install
 
 ## Thunderfs options
 
